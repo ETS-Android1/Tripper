@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tripper</string>
+    <string name="developer">Developed by Harsh</string>
+    <string name="lets_get_started">let\'s Get Started</string>
+
+    <string name="slider1_header">Welcome to Tripper</string>
+    <string name="slider_desc1">Dreamt of travelling around the world with your backpack?</string>
+</resources>
