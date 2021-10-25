@@ -17,6 +17,19 @@
         app:layout_constraintTop_toTopOf="parent">
     </androidx.viewpager.widget.ViewPager>
 
+    <Button
+        android:id="@+id/skip_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:drawableEnd="@drawable/skip_icon"
+        android:padding="10dp"
+        android:text="@string/skip"
+        android:onClick="skip"
+        android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -31,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/gradient_start_color"
-            android:text="@string/lets_get_started" />
+            android:text="@string/lets_get_started"
+            android:visibility="invisible"/>
 
         <LinearLayout
             android:id="@+id/dots"
@@ -43,13 +57,18 @@
 
         <Button
             android:id="@+id/next_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="78dp"
+            android:layout_height="64dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="#00000000"
             android:backgroundTint="#00000000"
             android:drawableRight="@drawable/next_btn"
-            android:paddingBottom="30dp" />
+            android:onClick="next"
+            android:paddingBottom="30dp"
+            app:backgroundTint="#00000000" />
 
     </RelativeLayout>
 

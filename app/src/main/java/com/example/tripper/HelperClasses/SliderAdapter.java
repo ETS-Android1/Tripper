@@ -23,20 +23,22 @@ public class SliderAdapter extends PagerAdapter {
         this.context = context;
     }
     int images[]={
-      R.drawable.backpack,
-            R.drawable.chalk,
-            R.drawable.chat
+      R.drawable.slider1,
+            R.drawable.slider2,
+            R.drawable.backpack,
+            R.drawable.travel_world
     };
     int headings[]={
             R.string.slider1_header,
             R.string.slider1_header,
             R.string.slider1_header,
-
+            R.string.slider1_header
     };
     int description[]={
-            R.string.slider_desc1,
-            R.string.slider_desc1,
-            R.string.slider_desc1,
+            R.string.slider_desc3,
+            R.string.slider_desc3,
+            R.string.slider_desc3,
+            R.string.slider_desc3
     };
 
     @Override

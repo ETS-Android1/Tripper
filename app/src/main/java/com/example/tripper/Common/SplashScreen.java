@@ -1,6 +1,7 @@
 package com.example.tripper.Common;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -10,11 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.tripper.R;
+import com.example.tripper.User.UserDashboard;
 
 public class SplashScreen extends AppCompatActivity {
     ImageView logo,appName,splashImg;
     LottieAnimationView lottieAnimationView;
     TextView tv;
+    SharedPreferences onBoardingScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +42,24 @@ public class SplashScreen extends AppCompatActivity {
                 }catch (Exception e){
                     e.printStackTrace();
                 }finally {
-                    Intent intent=new Intent(SplashScreen.this,OnBoarding.class);
-                    startActivity(intent);
-                    finish();
+                    onBoardingScreen=getSharedPreferences("onBoardingScreen",MODE_PRIVATE);
+                    boolean isFirst=onBoardingScreen.getBoolean("firstTime",true);
+
+                    if(isFirst){
+                        SharedPreferences.Editor editor=onBoardingScreen.edit();
+                        editor.putBoolean("firstTime",false);
+                        editor.commit();
+
+                        Intent intent=new Intent(SplashScreen.this,OnBoarding.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Intent intent=new Intent(SplashScreen.this, UserDashboard.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+
                 }
             }
         };
