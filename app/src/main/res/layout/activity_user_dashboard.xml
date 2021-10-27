@@ -203,7 +203,10 @@
                     android:id="@+id/featured_background"
                     android:layout_width="170dp"
                     android:layout_height="280dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/banner_background"
                     android:orientation="vertical">
 
@@ -212,15 +215,17 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="50dp"
+                        android:fontFamily="@font/aldrich"
                         android:text="@string/featured_locations"
                         android:textAllCaps="true"
                         android:textSize="25dp" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/featured_locations_description" />
+                        android:layout_margin="10dp"
+                        android:text="@string/featured_locations_description"
+
+                        />
 
                 </LinearLayout>
 
