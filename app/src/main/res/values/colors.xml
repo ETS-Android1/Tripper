@@ -16,8 +16,8 @@
 
     <!-- Dashboard Colors -->
     <color name="home_background">#f2f5f8</color>
-    <color name="banner_background">#f1e9ce</color>
-    <color name="banner_background_light">#56f1e9ce</color>
+    <color name="banner_background">#BBDEFB</color>
+    <color name="banner_background_light">#E1F5FE</color>
 
     <!-- Card Colors -->
     <color name="card1">#d4cbe5</color>
