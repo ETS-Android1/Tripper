@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_restaurant_24"
+            android:title="@string/home" />
+
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_baseline_search_24"
+            android:title="@string/search_text" />
+        <item
+            android:id="@+id/nav_all_categories"
+            android:icon="@drawable/ic_baseline_category_24"
+            android:title="@string/categories" />
+        <item
+            android:id="@+id/nav_add_missing_place"
+            android:icon="@drawable/ic_baseline_add_location_24"
+            android:title="@string/add_missing_place" />
+
+    </group>
+
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_login"
+                    android:icon="@drawable/ic_baseline_login_24"
+                    android:title="@string/login" />
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_baseline_account_circle_24"
+                    android:title="@string/profile" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_baseline_logout_24"
+                    android:title="@string/logout" />
+            </group>
+
+        </menu>
+    </item>
+
+    <item android:title="Categories">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_restaurant"
+                    android:icon="@drawable/ic_baseline_restaurant_24"
+                    android:title="@string/login" />
+
+                <item
+                    android:id="@+id/nav_bank"
+                    android:icon="@drawable/ic_baseline_account_balance_24"
+                    android:title="@string/banks" />
+                <item
+                    android:id="@+id/nav_airport"
+                    android:icon="@drawable/ic_baseline_local_airport_24"
+                    android:title="@string/airports" />
+                <item
+                    android:id="@+id/nav_shop"
+                    android:icon="@drawable/ic_baseline_shopping_cart_24"
+                    android:title="@string/shops" />
+            </group>
+
+        </menu>
+    </item>
+
+    <item android:title="Share">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_baseline_share_24"
+                    android:title="@string/share_us" />
+
+                <item
+                    android:id="@+id/nav_rate_us"
+                    android:icon="@drawable/ic_baseline_star_rate_24"
+                    android:title="@string/rate_us" />
+            </group>
+
+        </menu>
+    </item>
+
+</menu>
