@@ -1,5 +1,6 @@
 package com.example.tripper.User;
 
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tripper.Common.LoginSignUp.LocationContributorStartupScreen;
 import com.example.tripper.HelperClasses.HomeAdapter.CategoriesAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.CategoriesHelperClass;
 import com.example.tripper.HelperClasses.HomeAdapter.FeaturedAdapter;
@@ -33,7 +35,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     GradientDrawable gradient1, gradient2, gradient3, gradient4, gradient5;
     ImageView menuIcon;
 
-
     //Drawer Menu
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -44,6 +45,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_dashboard);
 
+        //Recycler Hooks
         featuredRecycler = findViewById(R.id.featured_recycler);
         categoriesRecycler = findViewById(R.id.categories_recycler);
         mostViewedRecycler = findViewById(R.id.most_viewed_recycler);
@@ -57,13 +59,14 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         navigationDrawer();
 
 
-        //Function Execute when dashboard created
+        //RecyclerView Calls
         featuredRecycler();
         mostViewedRecycler();
         categoriesRecycler();
         ;
     }
 
+    //Navigation Drawer Functions
     private void navigationDrawer() {
         //Navigation Drawer
         navigationView.bringToFront();
@@ -80,9 +83,29 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 }
             }
         });
-
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_all_categories:
+                Intent intent = new Intent(getApplicationContext(), AllCategoires.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
+    }
+
+    //RecyclerView Functions
     private void mostViewedRecycler() {
         mostViewedRecycler.setHasFixedSize(true);
         mostViewedRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -133,9 +156,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         categoriesRecycler.setAdapter(adapter);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return true;
-
+    public  void callLocationContributorScreen(View view){
+        startActivity(new Intent(getApplicationContext(), LocationContributorStartupScreen.class));
     }
+
 }

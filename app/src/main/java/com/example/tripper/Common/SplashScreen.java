@@ -14,7 +14,7 @@ import com.example.tripper.R;
 import com.example.tripper.User.UserDashboard;
 
 public class SplashScreen extends AppCompatActivity {
-    ImageView logo,appName,splashImg;
+    ImageView logo;
     LottieAnimationView lottieAnimationView;
     TextView tv;
     SharedPreferences onBoardingScreen;
@@ -24,14 +24,10 @@ public class SplashScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);//Removes the status bar from top
         setContentView(R.layout.splash_screen);
         logo=findViewById(R.id.logo);
-        appName=findViewById(R.id.app_name);
-        splashImg=findViewById(R.id.image);
+
         tv=findViewById(R.id.powered);
         lottieAnimationView=findViewById(R.id.lottie);
-
-        splashImg.animate().translationY(-3000).setDuration(1000).setStartDelay(4000);
         logo.animate().translationY(3000).setDuration(1000).setStartDelay(4000);
-        appName.animate().translationY(3000).setDuration(1000).setStartDelay(4000);
         lottieAnimationView.animate().translationY(3000).setDuration(1000).setStartDelay(4000);
         tv.animate().translationY(3000).setDuration(1000).setStartDelay(4000);
         Thread td=new Thread(){

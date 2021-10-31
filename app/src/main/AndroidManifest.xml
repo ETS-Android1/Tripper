@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tripper">
         <activity
+            android:name=".Common.LoginSignUp.Login"
+            android:exported="false" />
+        <activity
+            android:name=".Common.LoginSignUp.LocationContributorStartupScreen"
+            android:exported="false" />
+        <activity
+            android:name=".User.AllCategoires"
+            android:exported="false" />
+        <activity
             android:name=".Common.OnBoarding"
             android:exported="false" />
         <activity

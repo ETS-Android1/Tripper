@@ -39,4 +39,16 @@
     <string name="share_us">Share Us</string>
     <string name="rate_us">Rate Us</string>
     <string name="travel_around_the_world">Travel around the world</string>
+    <string name="expand_all">EXPAND ALL</string>
+    <string name="Beach">Beaches</string>
+    <string name="hill">Hill Station</string>
+    <string name="island">Island</string>
+    <string name="town_cities"><![CDATA[Town & Cities]]></string>
+    <string name="contribute">Contribute Here</string>
+    <string name="contribute_desc">Contribute here and become the local guide of your city</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="how_we_work">How we Work?</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="create_account">Create Account</string>
 </resources>
