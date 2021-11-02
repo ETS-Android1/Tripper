@@ -25,4 +25,9 @@ public class LocationContributorStartupScreen extends AppCompatActivity {
         Intent intent=new Intent(getApplicationContext(),Login.class);
         startActivity(intent);
     }
+
+    public void callSignUpScreen(View view){
+        Intent intent=new Intent(getApplicationContext(),SignUp.class);
+        startActivity(intent);
+    }
 }
