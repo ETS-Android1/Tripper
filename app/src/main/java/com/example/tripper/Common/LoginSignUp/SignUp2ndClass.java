@@ -33,8 +33,7 @@ public class SignUp2ndClass extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void callLoginScreen(View view){
-        Intent intent = new Intent(getApplicationContext(), Login.class);
-        startActivity(intent);
+    public void callBackScreen(View view){
+        SignUp2ndClass.super.onBackPressed();
     }
 }

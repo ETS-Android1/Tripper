@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tripper">
         <activity
+            android:name=".Common.LoginSignUp.MakeSelection"
+            android:exported="false" />
+        <activity
+            android:name=".Common.LoginSignUp.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Common.LoginSignUp.VerifyOTP"
+            android:exported="false" />
+        <activity
             android:name=".Common.LoginSignUp.SignUp3rdClass"
             android:exported="false" />
         <activity
