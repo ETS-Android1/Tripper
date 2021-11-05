@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:src="@drawable/back_64px"
             android:transitionName="transition_back_btn" />
 
         <TextView
@@ -28,6 +28,7 @@
             android:fontFamily="@font/arbutus"
             android:text="@string/create_account"
             android:textAllCaps="true"
+            android:textColor="#C60010"
             android:textSize="40sp"
             android:transitionName="transition_title_btn" />
 
@@ -44,26 +45,27 @@
                 android:textSize="18sp" />
 
             <RadioGroup
+                android:id="@+id/radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female" />
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/other"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Other" />
@@ -72,9 +74,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/black"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:background="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,11 +85,12 @@
                 android:textSize="18sp" />
 
             <DatePicker
+                android:id="@+id/age_picker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:datePickerMode="spinner"
                 android:calendarViewShown="false"
-                android:spinnersShown="true"/>
+                android:datePickerMode="spinner"
+                android:spinnersShown="true" />
 
         </LinearLayout>
 
@@ -98,7 +101,7 @@
             android:layout_marginTop="20dp"
             android:elevation="5dp"
             android:onClick="callNextSignUpScreen"
-            android:text="@string/next_btn"/>
+            android:text="@string/next_btn" />
 
         <Button
             android:id="@+id/signup_login_btn"
@@ -106,13 +109,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="#00000000"
+            android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
             android:elevation="5dp"
             android:fontFamily="@font/aldrich"
-            android:text="@string/back"
-            android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
-            android:textColor="@color/black"
             android:onClick="callBackScreen"
-            />
+            android:text="@string/back"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>
