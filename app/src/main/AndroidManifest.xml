@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tripper">
         <activity
+            android:name=".Common.LoginSignUp.ForgotPasswordSuccessMessage"
+            android:exported="false" />
+        <activity
+            android:name=".Common.LoginSignUp.SetNewPassword"
+            android:exported="false" />
+        <activity
             android:name=".Common.LoginSignUp.MakeSelection"
             android:exported="false" />
         <activity
