@@ -1,5 +1,6 @@
 package com.example.tripper.Common.LoginSignUp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -107,5 +108,10 @@ public class VerifyOTP extends AppCompatActivity {
         if (!code.isEmpty()) {
             verifyCode(code);
         }
+    }
+
+    public void callLoginScreen(View view) {
+        Intent intent=new Intent(this,SignUp.class);
+        startActivity(intent);
     }
 }

@@ -114,23 +114,25 @@ public class SignUp extends AppCompatActivity {
 
     public void callNextSignUpScreen(View view) {
 
-        if(!validateFullName() | !validateUsername() | !validateEmail() | !validatePassword()){
+        if (!validateFullName() | !validateUsername() | !validateEmail() | !validatePassword()) {
             return;
         }
 
         Intent intent = new Intent(getApplicationContext(), SignUp2ndClass.class);
-        intent.putExtra("fullName",fullName.getEditText().getText().toString().trim());
-        intent.putExtra("Username",userName.getEditText().getText().toString().trim());
-        intent.putExtra("Email",email.getEditText().getText().toString().trim());
-        intent.putExtra("Password",password.getEditText().getText().toString().trim());
+        intent.putExtra("fullName", fullName.getEditText().getText().toString().trim());
+        intent.putExtra("Username", userName.getEditText().getText().toString().trim());
+        intent.putExtra("Email", email.getEditText().getText().toString().trim());
+        intent.putExtra("Password", password.getEditText().getText().toString().trim());
         startActivity(intent);
     }
-
-
 
 
     public void callLoginScreen(View view) {
         Intent intent = new Intent(getApplicationContext(), Login.class);
         startActivity(intent);
+    }
+
+    public void callBackScreen(View view) {
+        SignUp.super.onBackPressed();
     }
 }
