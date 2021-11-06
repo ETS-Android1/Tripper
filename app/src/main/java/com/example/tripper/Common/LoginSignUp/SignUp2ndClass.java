@@ -85,7 +85,7 @@ public class SignUp2ndClass extends AppCompatActivity {
         String date=day+"/"+month+"/"+year;
         Intent intent = new Intent(getApplicationContext(), SignUp3rdClass.class);
         intent.putExtra("gender",gender);
-        intent.putExtra("dob",date);
+        intent.putExtra("dateOfBirth",date);
         intent.putExtra("fullName",fullName);
         intent.putExtra("username",username);
         intent.putExtra("email",email);

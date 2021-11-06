@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "289171417891",
+    "project_id": "tripper-4fd2f",
+    "storage_bucket": "tripper-4fd2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289171417891:android:c1034f934d197205443a96",
+        "android_client_info": {
+          "package_name": "com.example.tripper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289171417891-gqikgicm21j7a4ca09kisrtpb3kea16h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLk5cXXHXjYlVTYZW-yHl5I6cJn3U8F64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289171417891-gqikgicm21j7a4ca09kisrtpb3kea16h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

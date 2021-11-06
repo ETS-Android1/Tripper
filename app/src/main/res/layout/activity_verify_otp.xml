@@ -29,9 +29,9 @@
             android:fontFamily="@font/aldrich"
             android:includeFontPadding="false"
             android:text="@string/otp_code_text"
+            android:textColor="#C60010"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/black"
             android:textSize="100sp" />
 
         <TextView
@@ -59,6 +59,7 @@
             android:textSize="16sp" />
 
         <com.chaos.view.PinView
+            android:id="@+id/pin_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:itemCount="6"
@@ -79,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Verify Code"
+            android:onClick="callNextScreenFromOTP"
             android:layout_marginTop="30dp"
             />
     </LinearLayout>
