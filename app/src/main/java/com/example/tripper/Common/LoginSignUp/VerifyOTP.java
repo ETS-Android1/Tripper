@@ -38,7 +38,7 @@ public class VerifyOTP extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_otp);
 
-        mAuth = FirebaseAuth.getInstance();
+         mAuth = FirebaseAuth.getInstance();
         pinFromUser = findViewById(R.id.pin_view);
 
         phoneNo = getIntent().getStringExtra("phoneNo");
@@ -129,4 +129,4 @@ public class VerifyOTP extends AppCompatActivity {
         Intent intent = new Intent(this, SignUp.class);
         startActivity(intent);
     }
-}
+    }
