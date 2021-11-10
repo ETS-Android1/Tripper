@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.chaos.view.PinView;
+import com.example.tripper.Databases.UserHelperClass;
 import com.example.tripper.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -112,7 +113,9 @@ public class VerifyOTP extends AppCompatActivity {
     private void storeNewUserData() {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
-        reference.setValue("First Record");
+
+        UserHelperClass addNewUser=new UserHelperClass(fullName,username,email,phoneNo,password,birthDate,gender);
+        reference.child(phoneNo).setValue(addNewUser);
     }
 
     public void callNextScreenFromOTP(View view) {
