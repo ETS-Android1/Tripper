@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_white"
     android:padding="30dp"
     tools:context=".Common.LoginSignUp.Login">
@@ -28,58 +28,59 @@
             android:text="@string/login"
             android:textAllCaps="true"
             android:textColor="#C60021"
-            android:textSize="40sp"/>
+            android:textSize="40sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneNoLogin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="@string/enter_username"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/enter_phoneNo"
                 android:textColorHint="#8A8A8A"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidthFocused="2dp"
-                app:startIconDrawable="@drawable/ic_baseline_person_24"
-                app:startIconTint="@color/black"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/black"
-                android:layout_marginBottom="10dp">
+                app:startIconDrawable="@drawable/ic_baseline_person_24"
+                app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/aldrich"
-                    android:inputType="text"
-                    />
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordLogin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="@string/enter_password"
                 android:textColorHint="#8A8A8A"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidthFocused="2dp"
-                app:startIconDrawable="@drawable/ic_baseline_lock_24"
-                app:startIconTint="@color/black"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/black"
-                >
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/aldrich"
-                    android:inputType="textPassword"
-                    />
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,40 +90,52 @@
                 android:padding="10dp">
 
                 <CheckBox
+                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-                    android:text="Remember Me"
+                    android:layout_centerVertical="true"
                     android:buttonTint="@color/black"
-                    android:textColor="@color/black"
-                    android:layout_centerVertical="true"/>
+                    android:text="Remember Me"
+                    android:textColor="@color/black" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="#00000000"
+                    android:onClick="forgotPasswordScreen"
                     android:text="Forgot Password"
-                    android:textColor="@color/black"
-                    android:onClick="forgotPasswordScreen"/>
+                    android:textColor="@color/black" />
             </RelativeLayout>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:onClick="letUserLogin"
+                android:text="@string/login" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="#00000000"
-                android:layout_marginTop="20dp"
-                android:text="@string/create_account"
                 android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:onClick="callSignUpScreen"/>
+                android:layout_marginTop="20dp"
+                android:background="#00000000"
+                android:onClick="callSignUpScreen"
+                android:text="@string/create_account"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

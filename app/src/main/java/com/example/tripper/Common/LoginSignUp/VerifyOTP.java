@@ -21,16 +21,18 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class VerifyOTP extends AppCompatActivity {
 
     PinView pinFromUser;
     String codeBySystem;
-    String phoneNo, fullName, username, email, password, birthDate, gender;
+    String phoneNo, fullName, username, email, password, date, gender;
     private FirebaseAuth mAuth;
 
     @Override
@@ -47,7 +49,7 @@ public class VerifyOTP extends AppCompatActivity {
         username = getIntent().getStringExtra("username");
         email = getIntent().getStringExtra("email");
         password = getIntent().getStringExtra("password");
-        birthDate = getIntent().getStringExtra("dateOfBirth");
+        date = getIntent().getStringExtra("date");
         gender = getIntent().getStringExtra("gender");
 
         sendVerificationCode(phoneNo);
@@ -99,7 +101,6 @@ public class VerifyOTP extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            storeNewUserData();
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 // The verification code entered was invalid
@@ -114,14 +115,17 @@ public class VerifyOTP extends AppCompatActivity {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
-        UserHelperClass addNewUser=new UserHelperClass(fullName,username,email,phoneNo,password,birthDate,gender);
+        UserHelperClass addNewUser=new UserHelperClass(fullName,username,email,phoneNo,password,date,gender);
         reference.child(phoneNo).setValue(addNewUser);
+
+
     }
 
     public void callNextScreenFromOTP(View view) {
-        String code = pinFromUser.getText().toString();
+        String code = Objects.requireNonNull(pinFromUser.getText()).toString();
         if (!code.isEmpty()) {
             verifyCode(code);
+            storeNewUserData();
             Toast.makeText(this,"Successful",Toast.LENGTH_LONG).show();
             Intent intent=new Intent(this,Login.class);
             startActivity(intent);

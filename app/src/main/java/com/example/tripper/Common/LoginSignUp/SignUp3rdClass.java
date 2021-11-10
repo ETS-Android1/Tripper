@@ -40,7 +40,7 @@ public class SignUp3rdClass extends AppCompatActivity {
         String username = getIntent().getStringExtra("username");
         String email = getIntent().getStringExtra("email");
         String password = getIntent().getStringExtra("password");
-        String birthDate = getIntent().getStringExtra("dateOfBirth");
+        String date = getIntent().getStringExtra("date");
         String gender = getIntent().getStringExtra("gender");
 
         String getUserEnteredPhoneNumber = phoneNumber.getEditText().getText().toString().trim();
@@ -53,7 +53,7 @@ public class SignUp3rdClass extends AppCompatActivity {
         intent.putExtra("username", username);
         intent.putExtra("email", email);
         intent.putExtra("password", password);
-        intent.putExtra("BirthDate", birthDate);
+        intent.putExtra("date", date);
         intent.putExtra("gender", gender);
         intent.putExtra("phoneNo", phoneNo);
         startActivity(intent);
