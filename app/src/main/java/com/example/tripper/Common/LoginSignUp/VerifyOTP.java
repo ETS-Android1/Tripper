@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,10 +30,10 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class VerifyOTP extends AppCompatActivity {
-
+    TextView verifyOtpPhone;
     PinView pinFromUser;
     String codeBySystem;
-    String phoneNo, fullName, username, email, password, date, gender;
+    String phoneNo, fullName, username, email, password, date, gender,whatToDo;
     private FirebaseAuth mAuth;
 
     @Override
@@ -44,6 +45,7 @@ public class VerifyOTP extends AppCompatActivity {
          mAuth = FirebaseAuth.getInstance();
         pinFromUser = findViewById(R.id.pin_view);
 
+        //Get all Data from Intent
         phoneNo = getIntent().getStringExtra("phoneNo");
         fullName = getIntent().getStringExtra("fullName");
         username = getIntent().getStringExtra("username");
@@ -51,7 +53,10 @@ public class VerifyOTP extends AppCompatActivity {
         password = getIntent().getStringExtra("password");
         date = getIntent().getStringExtra("date");
         gender = getIntent().getStringExtra("gender");
+        whatToDo=getIntent().getStringExtra("whatToDo");
 
+        verifyOtpPhone=findViewById(R.id.verifyOtpPhone);
+        verifyOtpPhone.setText("Enter one time password sent on "+phoneNo);
         sendVerificationCode(phoneNo);
     }
 
@@ -111,6 +116,13 @@ public class VerifyOTP extends AppCompatActivity {
                 });
     }
 
+    private void updateOldUsersData() {
+        Intent intent=new Intent(getApplicationContext(),SetNewPassword.class);
+        intent.putExtra("phoneNo",phoneNo);
+        startActivity(intent);
+        finish();
+    }
+
     private void storeNewUserData() {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
@@ -125,10 +137,14 @@ public class VerifyOTP extends AppCompatActivity {
         String code = Objects.requireNonNull(pinFromUser.getText()).toString();
         if (!code.isEmpty()) {
             verifyCode(code);
-            storeNewUserData();
-            Toast.makeText(this,"Successful",Toast.LENGTH_LONG).show();
-            Intent intent=new Intent(this,Login.class);
-            startActivity(intent);
+            if (whatToDo.equals("updateData")){
+                updateOldUsersData();
+            }else{
+                storeNewUserData();
+                Toast.makeText(this,"Successful",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(this,Login.class);
+                startActivity(intent);
+            }
         }
     }
 

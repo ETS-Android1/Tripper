@@ -105,7 +105,8 @@
                     android:background="#00000000"
                     android:onClick="forgotPasswordScreen"
                     android:text="Forgot Password"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    />
             </RelativeLayout>
 
             <Button

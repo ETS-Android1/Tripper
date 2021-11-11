@@ -23,5 +23,6 @@ public class ForgotPasswordSuccessMessage extends AppCompatActivity {
     public void callLoginScreen(View view) {
         Intent intent = new Intent(getApplicationContext(), Login.class);
         startActivity(intent);
+        finish();
     }
 }

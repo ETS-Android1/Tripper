@@ -56,7 +56,7 @@
     <string name="otp_code_text">Co\nde</string>
     <string name="otp_verification_text">Verification</string>
     <string name="otp_description_text">Enter one time password sent on +917004899150</string>
-    <string name="forgot_password_detail">Provide Your Account Email for which you want to reset your password</string>
+    <string name="forgot_password_detail">Provide Your Phone Number for which you want to reset your password</string>
     <string name="make_selection">Select which method you would use to reset your password?</string>
     <string name="username">Username</string>
     <string name="full_name">Full Name</string>

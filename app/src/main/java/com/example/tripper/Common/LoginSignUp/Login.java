@@ -89,9 +89,6 @@ public class Login extends AppCompatActivity {
 
                     String _fullName=snapshot.child(_completePhoneNumber).child("fullName").getValue(String.class);
                     String _email=snapshot.child(_completePhoneNumber).child("email").getValue(String.class);
-                    String _phoneNo=snapshot.child(_completePhoneNumber).child("phoneNo").getValue(String.class);
-                    String _dateOfBirth=snapshot.child(_completePhoneNumber).child("date").getValue(String.class);
-
                     Toast.makeText(Login.this, _fullName+_email, Toast.LENGTH_LONG).show();
 
                     if (systemPassword.equals(_password)) {
