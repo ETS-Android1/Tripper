@@ -3,13 +3,16 @@
     package="com.example.tripper">
 
     <application
-        android:usesCleartextTraffic= "true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Tripper">
+        android:theme="@style/Theme.Tripper"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".LocationContributor.LocationContributorDashboard"
+            android:exported="false" />
         <activity
             android:name=".Common.LoginSignUp.ForgotPasswordSuccessMessage"
             android:exported="false" />

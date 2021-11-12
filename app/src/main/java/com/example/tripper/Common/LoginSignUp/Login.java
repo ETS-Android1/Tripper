@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.tripper.Databases.SessionManager;
+import com.example.tripper.LocationContributor.LocationContributorDashboard;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 public class Login extends AppCompatActivity {
 
     TextInputLayout phoneNumber, password;
-    ProgressBar progressBar;
 
     ImageView backBtn;
 
@@ -36,7 +37,6 @@ public class Login extends AppCompatActivity {
 
         phoneNumber = findViewById(R.id.phoneNoLogin);
         password = findViewById(R.id.passwordLogin);
-        progressBar = findViewById(R.id.progress_bar);
 
         backBtn = findViewById(R.id.login_back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +64,6 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
-
         String _phoneNumber = phoneNumber.getEditText().getText().toString().trim();
         String _password = password.getEditText().getText().toString().trim();
 
@@ -85,28 +83,35 @@ public class Login extends AppCompatActivity {
                     phoneNumber.setError(null);
                     phoneNumber.setErrorEnabled(false);
 
+                    //Get users data from firebase
+                    String _username = snapshot.child(_completePhoneNumber).child("username").getValue(String.class);
                     String systemPassword = snapshot.child(_completePhoneNumber).child("password").getValue(String.class);
+                    String _fullName = snapshot.child(_completePhoneNumber).child("fullName").getValue(String.class);
+                    String _email = snapshot.child(_completePhoneNumber).child("email").getValue(String.class);
+                    String _phoneNo = snapshot.child(_completePhoneNumber).child("phoneNo").getValue(String.class);
+                    String _gender = snapshot.child(_completePhoneNumber).child("gender").getValue(String.class);
+                    String _dateOfBirth = snapshot.child(_phoneNo).child("date").getValue(String.class);
 
-                    String _fullName=snapshot.child(_completePhoneNumber).child("fullName").getValue(String.class);
-                    String _email=snapshot.child(_completePhoneNumber).child("email").getValue(String.class);
-                    Toast.makeText(Login.this, _fullName+_email, Toast.LENGTH_LONG).show();
+                    //Session
+                    SessionManager sessionManager = new SessionManager(Login.this);
+                    sessionManager.createLoginSession(_fullName, _username, _email, _phoneNo, _password, _dateOfBirth, _gender);
+
+                    startActivity(new Intent(getApplicationContext(), LocationContributorDashboard.class));
 
                     if (systemPassword.equals(_password)) {
                         password.setError(null);
                         password.setErrorEnabled(false);
                     } else {
-                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "No such user exist", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(Login.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
