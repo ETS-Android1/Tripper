@@ -11,8 +11,12 @@ public class SessionManager {
     SharedPreferences.Editor editor;
     Context context;
 
-    private static final String IS_LOGIN = "IsLoggedIn";
+    //Session names
+    public static final String SESSION_USERSESSION="userLoginSession";
+    public static final String SESSION_REMEMBERME="rememberMe";
 
+    //User Session variables
+    private static final String IS_LOGIN = "IsLoggedIn";
     public static final String KEY_FULLNAME = "fullName";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_EMAIL = "email";
@@ -21,7 +25,12 @@ public class SessionManager {
     public static final String KEY_DATE = "date";
     public static final String KEY_GENDER = "gender";
 
-    public SessionManager(Context _context) {
+    //Remember Me Variables
+    public static final String IS_REMEMBERME = "IsRememberMe";
+    public static final String KEY_SESSSIONPHONENUMBER = "phoneNumber";
+    public static final String KEY_SESSIONPASSWORD = "password";
+
+    public SessionManager(Context _context,String  sessionName) {
         context = _context;
         userSession = _context.getSharedPreferences("userLoginSession", Context.MODE_PRIVATE);
         editor = userSession.edit();
@@ -68,4 +77,32 @@ public class SessionManager {
         editor.clear();
         editor.commit();
     }
+
+
+    //Remember Me Session
+    public void createRememberMeSession(String phoneNo, String password) {
+
+        editor.putBoolean(IS_REMEMBERME, true);
+
+        editor.putString(KEY_SESSSIONPHONENUMBER, phoneNo);
+        editor.putString(KEY_SESSIONPASSWORD, password);
+
+        editor.commit();
+    }
+
+    public HashMap<String, String> getRememberMeDetailFromSession() {
+        HashMap<String, String> userData = new HashMap<>();
+        userData.put(KEY_SESSSIONPHONENUMBER, userSession.getString(KEY_SESSSIONPHONENUMBER, null));
+        userData.put(KEY_SESSIONPASSWORD, userSession.getString(KEY_SESSIONPASSWORD, null));
+        return userData;
+    }
+
+    public boolean checkRememberMe() {
+        if (userSession.getBoolean(IS_REMEMBERME, false)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

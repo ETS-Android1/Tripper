@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -23,10 +24,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class Login extends AppCompatActivity {
-
+    EditText phoneNumber_editText, password_editText;
     TextInputLayout phoneNumber, password;
-
+    CheckBox rememberMe;
     ImageView backBtn;
 
     @Override
@@ -37,6 +40,18 @@ public class Login extends AppCompatActivity {
 
         phoneNumber = findViewById(R.id.phoneNoLogin);
         password = findViewById(R.id.passwordLogin);
+        rememberMe = findViewById(R.id.remember_me);
+        phoneNumber_editText = findViewById(R.id.phoneNumber_editText);
+        password_editText = findViewById(R.id.password_editText);
+
+        //Check whether phone number and password is already saved in Shared Preference or not
+        SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_REMEMBERME);
+        if (sessionManager.checkRememberMe()) {
+            HashMap<String, String> rememberMeDetails = sessionManager.getRememberMeDetailFromSession();
+            phoneNumber_editText.setText(rememberMeDetails.get(SessionManager.KEY_SESSSIONPHONENUMBER));
+            password_editText.setText(rememberMeDetails.get(SessionManager.KEY_SESSIONPASSWORD));
+
+        }
 
         backBtn = findViewById(R.id.login_back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +87,13 @@ public class Login extends AppCompatActivity {
         }
         String _completePhoneNumber = "+91" + _phoneNumber;
 
+        if (rememberMe.isChecked()) {
+            SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_REMEMBERME);
+            sessionManager.createRememberMeSession(_phoneNumber, _password);
+        }
 
-        //Database
 
+        // check Database
         Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNo").equalTo(_completePhoneNumber);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -93,7 +112,7 @@ public class Login extends AppCompatActivity {
                     String _dateOfBirth = snapshot.child(_phoneNo).child("date").getValue(String.class);
 
                     //Session
-                    SessionManager sessionManager = new SessionManager(Login.this);
+                    SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_USERSESSION);
                     sessionManager.createLoginSession(_fullName, _username, _email, _phoneNo, _password, _dateOfBirth, _gender);
 
                     startActivity(new Intent(getApplicationContext(), LocationContributorDashboard.class));

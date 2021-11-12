@@ -19,7 +19,7 @@ public class LocationContributorDashboard extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.textView);
 
-        SessionManager sessionManager = new SessionManager(this);
+        SessionManager sessionManager = new SessionManager(this,SessionManager.SESSION_USERSESSION);
         HashMap<String, String> userDetailFromSession=sessionManager.getUserDetailFromSession();
         String fullName=userDetailFromSession.get(SessionManager.KEY_FULLNAME);
         String phoneNumber=userDetailFromSession.get(SessionManager.KEY_PHONENUMBER);
