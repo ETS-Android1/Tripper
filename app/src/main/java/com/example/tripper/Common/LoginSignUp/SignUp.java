@@ -93,16 +93,14 @@ public class SignUp extends AppCompatActivity {
 
     private boolean validatePassword() {
         String value = password.getEditText().getText().toString().trim();
-        String RegularExpression = "^(?=.*[0-9])"
-                + "(?=.*[a-z])(?=.*[A-Z])"
-                + "(?=.*[@#$%^&+=])"
-                + "(?=\\S+$).{4,}$";
+        String RegularExpression = "^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{8,}$";
 
         if (value.isEmpty()) {
             password.setError("Field cannot be empty");
             return false;
         } else if (!value.matches(RegularExpression)) {
-            password.setError("Password should contain 1 digit, 1 special character and should have 4 letters.");
+            password.setError("Password should contain at least 1 Uppercase letter, 1 lowercase letter, 1 digit , 1 special character and Minimum 8 characters in length");
+            password.getEditText().setTransformationMethod(null);
             return false;
         } else {
             password.setError(null);
