@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_contributor_login);
 
+        //hooks
         phoneNumber = findViewById(R.id.phoneNoLogin);
         password = findViewById(R.id.passwordLogin);
         rememberMe = findViewById(R.id.remember_me);
@@ -85,6 +86,9 @@ public class Login extends AppCompatActivity {
         if (_phoneNumber.charAt(0) == '0') {
             _phoneNumber = _phoneNumber.substring(1);
         }
+        if(_phoneNumber.charAt(0)=='+'){
+            _phoneNumber = _phoneNumber.substring(3);
+        }
         String _completePhoneNumber = "+91" + _phoneNumber;
 
         if (rememberMe.isChecked()) {
@@ -115,11 +119,11 @@ public class Login extends AppCompatActivity {
                     SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_USERSESSION);
                     sessionManager.createLoginSession(_fullName, _username, _email, _phoneNo, _password, _dateOfBirth, _gender);
 
-                    startActivity(new Intent(getApplicationContext(), LocationContributorDashboard.class));
 
                     if (systemPassword.equals(_password)) {
                         password.setError(null);
                         password.setErrorEnabled(false);
+                        startActivity(new Intent(getApplicationContext(), LocationContributorDashboard.class));
                     } else {
                         Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
                     }
