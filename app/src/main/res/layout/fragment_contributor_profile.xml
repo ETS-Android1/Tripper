@@ -35,14 +35,29 @@
                         android:src="@drawable/user_500px" />
 
                     <TextView
+                        android:id="@+id/profile_textView_fullName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
                         android:text="Harsh Kumar"
                         android:textColor="#fff"
-                        android:textSize="21sp"
+                        android:textSize="25sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/logoutUser"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/logout_100px"
+                        android:layout_gravity="center" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Logout"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="-18dp"
+                        android:textSize="20sp"
+                        android:layout_gravity="center"/>
                 </LinearLayout>
 
             </RelativeLayout>
@@ -66,11 +81,13 @@
                         android:src="@drawable/email_send_96px" />
 
                     <TextView
+                        android:id="@+id/profile_textView_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingLeft="20dp"
-                        android:text="NA"
+                        android:textSize="18sp"
+                        android:text="abc@gmail.com"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -87,11 +104,13 @@
                         android:src="@drawable/phone_96px" />
 
                     <TextView
+                        android:id="@+id/profile_textView_mobileNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingLeft="20dp"
                         android:text="+917004899150"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -108,11 +127,13 @@
                         android:src="@drawable/user_96px" />
 
                     <TextView
+                        android:id="@+id/profile_textView_username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingLeft="20dp"
                         android:text="Username"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -129,11 +150,13 @@
                         android:src="@drawable/gender_128px" />
 
                     <TextView
+                        android:id="@+id/profile_textView_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingLeft="20dp"
-                        android:text="Male"
+                        android:textSize="18sp"
+                        android:text="gender"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -150,30 +173,35 @@
                         android:src="@drawable/calender" />
 
                     <TextView
+                        android:id="@+id/profile_textView_dateOfBirth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingLeft="20dp"
+                        android:textSize="18sp"
                         android:text="01-01-1997"
-
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/profile_edit_btn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="35dp"
                 android:elevation="8dp"
                 android:text="Edit"
-                android:textColor="#fff" />
+                android:layout_margin="10dp"
+                android:textColor="#fff"
+               />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="@string/developer"/>
         </LinearLayout>
-
-
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp" />
 </FrameLayout>

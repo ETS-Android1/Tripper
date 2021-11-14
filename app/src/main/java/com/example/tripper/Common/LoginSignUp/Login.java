@@ -37,7 +37,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_contributor_login);
-
         //hooks
         phoneNumber = findViewById(R.id.phoneNoLogin);
         password = findViewById(R.id.passwordLogin);
@@ -53,6 +52,7 @@ public class Login extends AppCompatActivity {
             password_editText.setText(rememberMeDetails.get(SessionManager.KEY_SESSIONPASSWORD));
 
         }
+
 
         backBtn = findViewById(R.id.login_back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +124,7 @@ public class Login extends AppCompatActivity {
                         password.setError(null);
                         password.setErrorEnabled(false);
                         startActivity(new Intent(getApplicationContext(), LocationContributorDashboard.class));
+                        finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
                     }
