@@ -16,12 +16,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripper.Common.LoginSignUp.LocationContributorStartupScreen;
+import com.example.tripper.Common.LoginSignUp.Login;
+import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.HelperClasses.HomeAdapter.CategoriesAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.CategoriesHelperClass;
 import com.example.tripper.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.tripper.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.MostViewedHelperClass;
+import com.example.tripper.LocationContributor.ContributorProfileFragment;
+import com.example.tripper.LocationContributor.LocationContributorDashboard;
 import com.example.tripper.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -73,6 +77,14 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
+        SessionManager sessionManager=new SessionManager(this,SessionManager.SESSION_USERSESSION);
+        if(sessionManager.checkLogin()){
+            navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_profile).setVisible(true);
+        }else{
+            navigationView.getMenu().findItem(R.id.nav_login).setVisible(true);
+        }
+
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,8 +110,19 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_all_categories:
-                Intent intent = new Intent(getApplicationContext(), AllCategoires.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), AllCategoires.class));
+                break;
+            case R.id.nav_add_missing_place:
+                startActivity(new Intent(getApplicationContext(),LocationContributorStartupScreen.class));
+                finish();
+                break;
+            case R.id.nav_login:
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
+                break;
+            case R.id.nav_profile:
+                startActivity(new Intent(getApplicationContext(), LocationContributorDashboard.class));
+                finish();
                 break;
         }
         return true;
