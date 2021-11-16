@@ -30,15 +30,15 @@ public class SliderAdapter extends PagerAdapter {
     };
     int headings[]={
             R.string.slider1_header,
-            R.string.slider1_header,
-            R.string.slider1_header,
-            R.string.slider1_header
+            R.string.slider2_header,
+            R.string.slider3_header,
+            R.string.slider4_header
     };
     int description[]={
+            R.string.slider_desc1,
+            R.string.slider_desc2,
             R.string.slider_desc3,
-            R.string.slider_desc3,
-            R.string.slider_desc3,
-            R.string.slider_desc3
+            R.string.slider_desc4
     };
 
     @Override

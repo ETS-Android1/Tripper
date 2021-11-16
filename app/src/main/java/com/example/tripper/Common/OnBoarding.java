@@ -85,6 +85,13 @@ public class OnBoarding extends AppCompatActivity {
                 animation= AnimationUtils.loadAnimation(OnBoarding.this,R.anim.bottom_anim);
                 letsGetStarted.setAnimation(animation);
                 letsGetStarted.setVisibility(View.VISIBLE);
+                letsGetStarted.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(getApplicationContext(),UserDashboard.class));
+                        finish();
+                    }
+                });
             }else{
                 letsGetStarted.setVisibility(View.INVISIBLE);
             }

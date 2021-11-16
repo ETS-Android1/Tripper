@@ -73,8 +73,9 @@ public class SessionManager {
         }
     }
 
+
     public void logoutUserFromSession() {
-        editor.clear();
+        editor.remove(IS_LOGIN);
         editor.commit();
     }
 
