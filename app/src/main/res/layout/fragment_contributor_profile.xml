@@ -23,185 +23,172 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:background="@color/gradient_start_color"
-                    android:orientation="vertical">
+                    android:layout_height="200dp"
+                    android:background="@color/colorPrimary"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="45dp"
-                        android:src="@drawable/user_500px" />
+                        android:id="@+id/profile_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/male_user_100px" />
 
                     <TextView
                         android:id="@+id/profile_textView_fullName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:text="Harsh Kumar"
-                        android:textColor="#fff"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
-                    <ImageView
-                        android:id="@+id/logoutUser"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/logout_100px"
-                        android:layout_gravity="center" />
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/profile_image"
+                        android:fontFamily="@font/arbutus"
+                        android:includeFontPadding="false"
+                        android:text="Harsh"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
                     <TextView
+                        android:id="@+id/username_field"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Logout"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="-18dp"
-                        android:textSize="20sp"
-                        android:layout_gravity="center"/>
+                        android:layout_below="@id/profile_textView_fullName"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/profile_image"
+                        android:includeFontPadding="false"
+                        android:text="harsh"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
             </RelativeLayout>
 
+
             <LinearLayout
-                android:layout_width="360dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="45dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/email_send_96px" />
-
-                    <TextView
-                        android:id="@+id/profile_textView_email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textSize="18sp"
-                        android:text="abc@gmail.com"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/phone_96px" />
-
-                    <TextView
-                        android:id="@+id/profile_textView_mobileNo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:text="+917004899150"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/user_96px" />
-
-                    <TextView
-                        android:id="@+id/profile_textView_username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:text="Username"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/gender_128px" />
-
-                    <TextView
-                        android:id="@+id/profile_textView_gender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textSize="18sp"
-                        android:text="gender"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/calender" />
-
-                    <TextView
-                        android:id="@+id/profile_textView_dateOfBirth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textSize="18sp"
-                        android:text="01-01-1997"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/profile_edit_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="35dp"
-                android:elevation="8dp"
-                android:text="Edit"
-                android:layout_margin="10dp"
-                android:textColor="#fff"
-               />
+                android:orientation="vertical"
+                android:padding="30dp">
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/profile_textView_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:paddingTop="20dp"
+                    app:boxBackgroundColor="@color/light_white">
 
-            <TextView
-                android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputEditText
+                       android:textColor="@color/black"
+                        android:enabled="false"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_baseline_email_24"
+                        android:drawablePadding="10dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/profile_editText_fullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Full Name"
+                    android:paddingTop="20dp"
+                    app:boxBackgroundColor="@color/light_white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:textColor="@color/black"
+                        android:enabled="false"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/user_24px"
+                        android:drawablePadding="10dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/profile_textView_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:paddingTop="20dp"
+                    app:boxBackgroundColor="@color/light_white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:textColor="@color/black"
+                        android:enabled="false"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/user_24px"
+                        android:drawablePadding="10dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/profile_textView_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Gender"
+                    android:paddingTop="20dp"
+                    app:boxBackgroundColor="@color/light_white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:textColor="@color/black"
+                        android:enabled="false"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_baseline_person_24"
+                        android:drawablePadding="10dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/profile_textView_dateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Date of Birth"
+                    android:paddingTop="20dp"
+                    app:boxBackgroundColor="@color/light_white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:textColor="@color/black"
+                        android:enabled="false"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_baseline_date_range_24"
+                        android:drawablePadding="10dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/edit_profile"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:text="@string/developer"/>
+                android:layout_margin="30dp"
+                android:layout_marginTop="20dp"
+                android:background="#fece2f"
+                android:fontFamily="@font/arbutus"
+                android:text="Edit" />
+            <Button
+                android:id="@+id/update_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_margin="30dp"
+                android:layout_marginTop="20dp"
+                android:background="#fece2f"
+                android:fontFamily="@font/arbutus"
+                android:text="UPDATE" />
+</RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
