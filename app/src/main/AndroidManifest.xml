@@ -11,6 +11,9 @@
         android:theme="@style/Theme.Tripper"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".User.Destination"
+            android:exported="false" />
+        <activity
             android:name=".LocationContributor.LocationContributorDashboard"
             android:exported="false" />
         <activity

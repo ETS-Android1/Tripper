@@ -29,9 +29,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="15dp"
-                app:navigationIcon="@drawable/home_48px">
+                android:layout_marginLeft="15dp">
                 <ImageView
+                    android:id="@+id/nav_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/home_48px"/>
+                <ImageView
+                    android:id="@+id/nav_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -185,6 +192,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/addTouristPlace"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -201,7 +209,7 @@
                             android:layout_below="@id/bus1"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Bus"
+                            android:text="Add Place"
                             android:textSize="24sp"
                             app:fontFamily="@font/aldrich" />
 
@@ -211,11 +219,12 @@
                             android:layout_height="75dp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/logout_100px" />
+                            app:srcCompat="@drawable/statue_of_liberty_40px" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/addHotels"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -232,7 +241,7 @@
                             android:layout_below="@id/train"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Train"
+                            android:text="Add Hotels"
                             android:textSize="24sp"
                             app:fontFamily="@font/aldrich" />
 
@@ -242,7 +251,7 @@
                             android:layout_height="75dp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/calender">
+                            app:srcCompat="@drawable/hotel_40px">
                         </ImageView>
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
@@ -259,6 +268,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/addShops"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -275,7 +285,7 @@
                             android:layout_below="@id/cycle"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Bus"
+                            android:text="Add Shops"
                             android:textSize="24sp"
                             app:fontFamily="@font/aldrich" />
 
@@ -285,12 +295,13 @@
                             android:layout_height="75dp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/gender_128px" />
+                            app:srcCompat="@drawable/shop_40px" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
+                    android:id="@+id/travelMode"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1">
@@ -303,20 +314,20 @@
                             android:id="@+id/textView9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/airplane"
+                            android:layout_below="@id/travelmode"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Train"
+                            android:text="Add Travel"
                             android:textSize="24sp"
                             app:fontFamily="@font/aldrich" />
 
                         <ImageView
-                            android:id="@+id/airplane"
+                            android:id="@+id/travelmode"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/airport_icon" />
+                            app:srcCompat="@drawable/subway_40px" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>

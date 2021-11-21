@@ -1,5 +1,7 @@
 package com.example.tripper.HelperClasses.HomeAdapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripper.R;
+import com.example.tripper.User.Destination;
 
 import java.util.ArrayList;
 
@@ -18,6 +21,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
 
     public FeaturedAdapter(ArrayList<FeaturedHelperClass> featuredLocations) {
         this.featuredLocations = featuredLocations;
+
     }
 
     @NonNull
@@ -35,6 +39,15 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
         holder.imageView.setImageResource(featuredHelperClass.getImage());
         holder.title.setText(featuredHelperClass.getTitle());
         holder.description.setText(featuredHelperClass.getDescription());
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), Destination.class);
+                    view.getContext().startActivity(intent);
+            }
+        });
 
     }
 

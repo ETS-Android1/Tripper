@@ -39,9 +39,9 @@ public class LocationContributorDashboard extends AppCompatActivity {
                     case R.id.bottom_nav_dashboard:
                         fragment=new ContributorDashboardFragment();
                         break;
-                    case R.id.bottom_nav_manage:
+                    /*case R.id.bottom_nav_manage:
                         fragment=new ContributorSettingsFragment();
-                        break;
+                        break;*/
                     case R.id.bottom_nav_profile:
                         fragment=new ContributorProfileFragment();
                         break;
