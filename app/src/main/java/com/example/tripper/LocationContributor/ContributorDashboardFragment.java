@@ -76,7 +76,7 @@ public class ContributorDashboardFragment extends Fragment {
        addTouristPlace.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-
+                startActivity(new Intent(getContext(),AddPlaces.class));
            }
        });
     }
