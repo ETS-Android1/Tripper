@@ -3,6 +3,7 @@ package com.example.tripper.LocationContributor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
@@ -23,7 +24,7 @@ public class AddPlaces extends AppCompatActivity {
 
     private CircleImageView Imagepicker;
     private ArrayList<Uri> imageUris;
-
+    private ProgressDialog progressDialog;
     private static final int PICK_IMAGES_CODES = 0;
 
     int position = 0;
@@ -35,6 +36,8 @@ public class AddPlaces extends AppCompatActivity {
 
         Imagepicker = findViewById(R.id.image_selection);
         imageUris = new ArrayList<>();
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setMessage("Uploading Data. Please Wait!!");
 
         String[] Categories = new String[]{"Beaches", "Hill Station", "Island", "Town & Cities"};
 
@@ -67,7 +70,7 @@ public class AddPlaces extends AppCompatActivity {
     }
 
     public void addPlace(View view) {
-
+        progressDialog.show();
     }
 
     @Override

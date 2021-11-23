@@ -92,7 +92,7 @@
             app:boxStrokeWidthFocused="2dp"
             app:endIconMode="clear_text"
             app:endIconTint="@color/black"
-            app:startIconDrawable="@drawable/create_16px"
+            app:startIconDrawable="@drawable/create_32px"
             app:startIconTint="@color/black"
             android:layout_below="@id/addplace_title">
 
