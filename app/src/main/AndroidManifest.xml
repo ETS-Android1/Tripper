@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tripper">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tripper"
         android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDXKIMR02RLDdm7CfGf3aErycNOdCw0gFg" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".LocationContributor.AddPlaces"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyDXKIMR02RLDdm7CfGf3aErycNOdCw0gFg" />
+        </activity>
         <activity
             android:name=".User.Destination"
             android:exported="false" />

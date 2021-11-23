@@ -86,7 +86,7 @@ public class Login extends AppCompatActivity {
         if (_phoneNumber.charAt(0) == '0') {
             _phoneNumber = _phoneNumber.substring(1);
         }
-        if(_phoneNumber.charAt(0)=='+'){
+        if (_phoneNumber.charAt(0) == '+') {
             _phoneNumber = _phoneNumber.substring(3);
         }
         String _completePhoneNumber = "+91" + _phoneNumber;
