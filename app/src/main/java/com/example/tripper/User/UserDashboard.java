@@ -24,7 +24,6 @@ import com.example.tripper.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.tripper.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.MostViewedHelperClass;
-import com.example.tripper.LocationContributor.ContributorProfileFragment;
 import com.example.tripper.LocationContributor.LocationContributorDashboard;
 import com.example.tripper.R;
 import com.google.android.material.navigation.NavigationView;
@@ -110,7 +109,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_all_categories:
-                startActivity(new Intent(getApplicationContext(), AllCategoires.class));
+                startActivity(new Intent(getApplicationContext(), AllCategories.class));
                 break;
             case R.id.nav_add_missing_place:
                 startActivity(new Intent(getApplicationContext(),LocationContributorStartupScreen.class));

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_white"
-    tools:context=".User.AllCategoires">
+    tools:context=".User.AllCategories">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,6 +63,7 @@
                 android:background="#00000000"
                 android:padding="20dp"
                 android:text="@string/expand_all"
+                android:onClick="callBeaches"
                 android:textColor="@color/black" />
 
             <ImageView
@@ -105,6 +106,7 @@
                 android:background="#00000000"
                 android:padding="20dp"
                 android:text="@string/expand_all"
+                android:onClick="callHillStation"
                 android:textColor="@color/black" />
 
         </RelativeLayout>
@@ -138,6 +140,7 @@
                     android:background="#00000000"
                     android:padding="15dp"
                     android:text="@string/expand_all"
+                    android:onClick="callIsland"
                     android:textColor="@color/cardview_light_background" />
 
                 <ImageView
@@ -181,6 +184,7 @@
                 android:background="#00000000"
                 android:padding="20dp"
                 android:text="@string/expand_all"
+                android:onClick="callCities"
                 android:textColor="@color/white" />
 
         </RelativeLayout>

@@ -66,14 +66,4 @@
     <string name="enter_phoneNo">Enter Phone Number</string>
 
 
-    <string-array name="categories">
-        <item>Beaches</item>
-        <item>Hill Station</item>
-        <item>Island</item>
-        <item>Town</item>
-        <item>Cities</item>
-        <item>Monuments</item>
-        <item>Place</item>
-    </string-array>
-
 </resources>
