@@ -62,7 +62,6 @@
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/mobile_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mobile_title"
@@ -107,7 +106,6 @@
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/mail_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mail_title"

@@ -8,7 +8,6 @@
             android:title="@string/home" />
 
         <item
-            android:id="@+id/nav_search"
             android:icon="@drawable/ic_baseline_search_24"
             android:title="@string/search_text" />
         <item
@@ -50,20 +49,16 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_restaurant"
                     android:icon="@drawable/ic_baseline_restaurant_24"
                     android:title="@string/restaurant" />
 
                 <item
-                    android:id="@+id/nav_bank"
                     android:icon="@drawable/ic_baseline_account_balance_24"
                     android:title="@string/banks" />
                 <item
-                    android:id="@+id/nav_airport"
                     android:icon="@drawable/ic_baseline_local_airport_24"
                     android:title="@string/airports" />
                 <item
-                    android:id="@+id/nav_shop"
                     android:icon="@drawable/ic_baseline_shopping_cart_24"
                     android:title="@string/shops" />
             </group>
@@ -75,12 +70,10 @@
         <menu>
             <group android:checkableBehavior="none">
                 <item
-                    android:id="@+id/nav_share"
                     android:icon="@drawable/ic_baseline_share_24"
                     android:title="@string/share_us" />
 
                 <item
-                    android:id="@+id/nav_rate_us"
                     android:icon="@drawable/ic_baseline_star_rate_24"
                     android:title="@string/rate_us" />
             </group>

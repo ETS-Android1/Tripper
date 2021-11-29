@@ -47,7 +47,6 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/login_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -56,7 +55,6 @@
                 android:onClick="callLoginScreen"/>
 
             <Button
-                android:id="@+id/signup_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

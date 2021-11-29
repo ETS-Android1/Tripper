@@ -23,7 +23,6 @@
             android:transitionName="transition_back_btn" />
 
         <TextView
-            android:id="@+id/signup_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -78,7 +77,6 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/signup_next_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -88,7 +86,6 @@
             android:transitionName="transition_next_btn" />
 
         <Button
-            android:id="@+id/signup_login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
