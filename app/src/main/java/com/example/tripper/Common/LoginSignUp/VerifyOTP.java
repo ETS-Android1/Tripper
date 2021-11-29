@@ -140,7 +140,7 @@ public class VerifyOTP extends AppCompatActivity {
             if (whatToDo.equals("updateData")){
                 updateOldUsersData();
             }else{
-                storeNewUserData();
+                //storeNewUserData();
                 Toast.makeText(this,"Successful",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(this,Login.class);
                 startActivity(intent);
