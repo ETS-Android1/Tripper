@@ -10,13 +10,12 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.tripper.Common.ForgotPassword;
 import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.LocationContributor.LocationContributorDashboard;
 import com.example.tripper.R;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -144,7 +143,6 @@ public class Login extends AppCompatActivity {
     private boolean validateFields() {
         String _phoneNumber = phoneNumber.getEditText().toString().trim();
         String _password = password.getEditText().toString().trim();
-
         if (_phoneNumber.isEmpty()) {
             phoneNumber.setError("Phone Number should not be empty");
             return false;

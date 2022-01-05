@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1015141380485",
-    "project_id": "tripper-mobile",
-    "storage_bucket": "tripper-mobile.appspot.com"
+    "project_number": "92720801237",
+    "project_id": "tripper-8",
+    "storage_bucket": "tripper-8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1015141380485:android:668cf7e65aad8b588e54ec",
+        "mobilesdk_app_id": "1:92720801237:android:0b5b561585b3338d4e495c",
         "android_client_info": {
           "package_name": "com.example.tripper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1015141380485-lgk8fp0n10pe5it3n867ci5pj9iac6p7.apps.googleusercontent.com",
+          "client_id": "92720801237-rdp03cqllkhsg47pioak5qo7gl9lf615.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCXLPMmTUjZYW8z2ZJ0cZOvgobvsBdQLLo"
+          "current_key": "AIzaSyDpnisS1dkuu9cH2rdj9dfxDIl5LPuz3Q8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1015141380485-lgk8fp0n10pe5it3n867ci5pj9iac6p7.apps.googleusercontent.com",
+              "client_id": "92720801237-rdp03cqllkhsg47pioak5qo7gl9lf615.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

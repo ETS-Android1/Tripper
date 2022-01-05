@@ -18,15 +18,14 @@
     </androidx.viewpager.widget.ViewPager>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="103dp"
+        android:layout_height="56dp"
         android:background="#00000000"
-        android:textSize="30dp"
-        android:drawableEnd="@drawable/fast_forward_64px"
+        android:onClick="skip"
         android:padding="10dp"
         android:text="@string/skip"
-        android:onClick="skip"
         android:textColor="#000"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,15 +56,15 @@
 
         <Button
             android:id="@+id/next_btn"
-            android:layout_width="78dp"
-            android:layout_height="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="81dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="0dp"
             android:background="#00000000"
             android:backgroundTint="#00000000"
-            android:drawableRight="@drawable/next_page_64px"
+            android:drawableRight="@drawable/forward_24px"
             android:onClick="next"
             android:paddingBottom="30dp"
             app:backgroundTint="#00000000" />

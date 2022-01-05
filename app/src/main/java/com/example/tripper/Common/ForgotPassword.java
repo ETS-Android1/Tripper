@@ -1,5 +1,4 @@
-package com.example.tripper.Common.LoginSignUp;
-
+package com.example.tripper.Common;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +7,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tripper.Common.LoginSignUp.VerifyOTP;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
