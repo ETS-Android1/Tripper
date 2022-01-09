@@ -79,7 +79,7 @@ public class SignUp2ndClass extends AppCompatActivity {
         String gender = selectedGender.getText().toString();
 
         int day=datePicker.getDayOfMonth();
-        int month=datePicker.getMonth();
+        int month=datePicker.getMonth()+1;
         int year=datePicker.getYear();
 
         String date=day+"/"+month+"/"+year;

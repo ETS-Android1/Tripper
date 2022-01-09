@@ -7,7 +7,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.tripper.Common.LoginSignUp.VerifyOTP;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -50,10 +49,7 @@ public class ForgotPassword extends AppCompatActivity {
                     phoneNumber_forgotPassword.setError(null);
                     phoneNumber_forgotPassword.setErrorEnabled(false);
 
-                    Intent intent = new Intent(getApplicationContext(), VerifyOTP.class);
-                    intent.putExtra("phoneNo", fullPhoneNo);
-                    intent.putExtra("whatToDo","updateData");
-                    startActivity(intent);
+
                     finish();
                 }else {
                     phoneNumber_forgotPassword.setError("No Such user exist");

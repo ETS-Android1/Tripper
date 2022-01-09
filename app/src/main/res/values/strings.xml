@@ -63,6 +63,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="enter_phoneNo">Enter Phone Number</string>
+    <string name="oneTimePassword">\"Enter one time password sent on \"</string>
 
 
 </resources>
