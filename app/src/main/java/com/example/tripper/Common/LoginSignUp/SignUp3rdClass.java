@@ -72,6 +72,9 @@ public class SignUp3rdClass extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                if(response.equals("User Registered Successfully")){
+                    startActivity(new Intent(getApplicationContext(),Login.class));
+                }
             }
         }, new Response.ErrorListener() {
             @Override
