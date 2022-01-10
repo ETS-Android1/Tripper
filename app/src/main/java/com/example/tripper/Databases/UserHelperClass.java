@@ -1,18 +1,29 @@
 package com.example.tripper.Databases;
 
 public class UserHelperClass {
-    String fullName,username,email,phoneNo,password,date,gender;
+    String fullName,username,email,phoneNo,password,date,gender,userID,createdDate;
 
-    public UserHelperClass(){}
+    public UserHelperClass() {
+    }
 
-    public UserHelperClass(String fullName, String username, String email, String phoneNo, String password, String date, String gender) {
+    public UserHelperClass(String userID,String fullName, String username, String email, String password, String date, String gender, String phoneNo,String createdDate) {
+        this.userID=userID;
         this.fullName = fullName;
         this.username = username;
         this.email = email;
-        this.phoneNo = phoneNo;
         this.password = password;
         this.date = date;
         this.gender = gender;
+        this.phoneNo = phoneNo;
+        this.createdDate=createdDate;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getFullName() {
@@ -69,5 +80,13 @@ public class UserHelperClass {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 }

@@ -1,10 +1,8 @@
 package com.example.tripper.Common.LoginSignUp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CheckBox;
@@ -12,24 +10,29 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.tripper.Common.ForgotPassword;
+import com.example.tripper.Databases.LoginController;
+import com.example.tripper.Databases.ResponseModel;
 import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.LocationContributor.LocationContributorDashboard;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     EditText phoneNumber_editText, password_editText;
     TextInputLayout phoneNumber, password;
     CheckBox rememberMe;
     ImageView backBtn;
+    public static final String SUCCESS = "success";
+    public static final String FAILURE = "failure";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,63 +97,56 @@ public class Login extends AppCompatActivity {
             SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_REMEMBERME);
             sessionManager.createRememberMeSession(_phoneNumber, _password);
         }
+        loginProcess(_completePhoneNumber,_password);
+    }
 
-
-        // check Database
-        Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNo").equalTo(_completePhoneNumber);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void loginProcess(String phoneNumber, String password) {
+        Call<ResponseModel> call = LoginController
+                .getInstance()
+                .getApiSet()
+                .verifyuser(phoneNumber, password);
+        call.enqueue(new Callback<ResponseModel>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    phoneNumber.setError(null);
-                    phoneNumber.setErrorEnabled(false);
-
-                    //Get users data from firebase
-                    String _username = snapshot.child(_completePhoneNumber).child("username").getValue(String.class);
-                    String systemPassword = snapshot.child(_completePhoneNumber).child("password").getValue(String.class);
-                    String _fullName = snapshot.child(_completePhoneNumber).child("fullName").getValue(String.class);
-                    String _email = snapshot.child(_completePhoneNumber).child("email").getValue(String.class);
-                    String _phoneNo = snapshot.child(_completePhoneNumber).child("phoneNo").getValue(String.class);
-                    String _gender = snapshot.child(_completePhoneNumber).child("gender").getValue(String.class);
-                    String _dateOfBirth = snapshot.child(_phoneNo).child("date").getValue(String.class);
-
-                    //Session
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+               ResponseModel obj=response.body();
+               if(obj.getResult().equals(SUCCESS)){
                     SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_USERSESSION);
-                    sessionManager.createLoginSession(_fullName, _username, _email, _phoneNo, _password, _dateOfBirth, _gender);
-
-
-                    if (systemPassword.equals(_password)) {
-                        password.setError(null);
-                        password.setErrorEnabled(false);
-                        startActivity(new Intent(getApplicationContext(), LocationContributorDashboard.class));
-                        finish();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "No such user exist", Toast.LENGTH_SHORT).show();
+                    sessionManager.createLoginSession(obj.getUser().getUserID(),
+                            obj.getUser().getFullName(),
+                            obj.getUser().getUsername(),
+                            obj.getUser().getEmail(),
+                            obj.getUser().getPassword(),
+                            obj.getUser().getDate(),
+                            obj.getUser().getGender(),
+                            obj.getUser().getPhoneNo());
+                    startActivity(new Intent(getApplicationContext(), LocationContributorDashboard.class));
+                    finish();
+                }else if (obj.getResult().equals(FAILURE)){
+                    Toast.makeText(getApplicationContext(), obj.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            }
+
+                }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
 
-                Toast.makeText(Login.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
+
         });
     }
 
-    private boolean validateFields() {
-        String _phoneNumber = phoneNumber.getEditText().toString().trim();
-        String _password = password.getEditText().toString().trim();
-        if (_phoneNumber.isEmpty()) {
-            phoneNumber.setError("Phone Number should not be empty");
-            return false;
-        } else if (_password.isEmpty()) {
-            password.setError("Password cannot be empty");
-            return false;
-        } else {
-            return true;
+        private boolean validateFields () {
+            String _phoneNumber = phoneNumber.getEditText().toString().trim();
+            String _password = password.getEditText().toString().trim();
+            if (_phoneNumber.isEmpty()) {
+                phoneNumber.setError("Phone Number should not be empty");
+                return false;
+            } else if (_password.isEmpty()) {
+                password.setError("Password cannot be empty");
+                return false;
+            } else {
+                return true;
+            }
+
         }
     }
-}

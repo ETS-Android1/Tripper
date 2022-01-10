@@ -23,8 +23,6 @@ import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.R;
 import com.example.tripper.User.UserDashboard;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
@@ -97,14 +95,14 @@ public class ContributorProfileFragment extends Fragment {
                 String gender=profile_gender.getEditText().getText().toString();
                 String birthdate=profile_dateOfBirth.getEditText().getText().toString();
 
-                DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
+                //DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
 
 
-                reference.child(phone).child("date").setValue(birthdate);
-                reference.child(phone).child("email").setValue(email);
-                reference.child(phone).child("fullName").setValue(fullName);
-                reference.child(phone).child("gender").setValue(gender);
-                reference.child(phone).child("username").setValue(username);
+                //reference.child(phone).child("date").setValue(birthdate);
+                //reference.child(phone).child("email").setValue(email);
+                //reference.child(phone).child("fullName").setValue(fullName);
+                //reference.child(phone).child("gender").setValue(gender);
+                //reference.child(phone).child("username").setValue(username);
                 Toast.makeText(getContext(), "Successfully Updated", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), Login.class));
                 getActivity().finish();

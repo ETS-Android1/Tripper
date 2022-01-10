@@ -9,11 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 public class ForgotPassword extends AppCompatActivity {
     TextInputLayout phoneNumber_forgotPassword;
@@ -41,7 +36,7 @@ public class ForgotPassword extends AppCompatActivity {
         Log.d("harsh",fullPhoneNo);
 
         //Check whether user exists or not in database
-        Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNo").equalTo(fullPhoneNo);
+        /*Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNo").equalTo(fullPhoneNo);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -61,7 +56,7 @@ public class ForgotPassword extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
     }
 
     private boolean validateFields(String _phoneNumber) {

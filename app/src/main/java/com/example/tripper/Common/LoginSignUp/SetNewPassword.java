@@ -8,8 +8,6 @@ import android.view.View;
 
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class SetNewPassword extends AppCompatActivity {
 
@@ -32,9 +30,9 @@ public class SetNewPassword extends AppCompatActivity {
         String _phoneNumber=getIntent().getStringExtra("phoneNo");
 
         //Update Data in Firestore and in Sessions
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
+       /* DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
         reference.child(_phoneNumber).child("password").setValue(_newPassword);
-
+*/
         startActivity(new Intent(getApplicationContext(),ForgotPasswordSuccessMessage.class));
         finish();
     }

@@ -17,6 +17,7 @@ public class SessionManager {
 
     //User Session variables
     private static final String IS_LOGIN = "IsLoggedIn";
+    private static final String KEY_USERID="userID";
     public static final String KEY_FULLNAME = "fullName";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_EMAIL = "email";
@@ -36,17 +37,18 @@ public class SessionManager {
         editor = userSession.edit();
     }
 
-    public void createLoginSession(String fullName, String username, String email, String phoneNo, String password, String age, String gender) {
+    public void createLoginSession(String userId,String fullName, String username, String email, String password, String age, String gender, String phoneNo) {
 
         editor.putBoolean(IS_LOGIN, true);
 
+        editor.putString(KEY_USERID,userId);
         editor.putString(KEY_FULLNAME, fullName);
         editor.putString(KEY_USERNAME, username);
         editor.putString(KEY_EMAIL, email);
-        editor.putString(KEY_PHONENUMBER, phoneNo);
         editor.putString(KEY_PASSWORD, password);
         editor.putString(KEY_GENDER, gender);
         editor.putString(KEY_DATE, age);
+        editor.putString(KEY_PHONENUMBER, phoneNo);
 
         editor.commit();
     }
@@ -57,11 +59,10 @@ public class SessionManager {
         userData.put(KEY_FULLNAME, userSession.getString(KEY_FULLNAME, null));
         userData.put(KEY_USERNAME, userSession.getString(KEY_USERNAME, null));
         userData.put(KEY_EMAIL, userSession.getString(KEY_EMAIL, null));
-        userData.put(KEY_PHONENUMBER, userSession.getString(KEY_PHONENUMBER, null));
         userData.put(KEY_PASSWORD, userSession.getString(KEY_PASSWORD, null));
         userData.put(KEY_DATE, userSession.getString(KEY_DATE, null));
         userData.put(KEY_GENDER, userSession.getString(KEY_GENDER, null));
-
+        userData.put(KEY_PHONENUMBER, userSession.getString(KEY_PHONENUMBER, null));
         return userData;
     }
 

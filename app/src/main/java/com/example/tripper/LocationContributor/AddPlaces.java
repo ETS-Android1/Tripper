@@ -19,18 +19,7 @@ import android.widget.Toast;
 
 import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,7 +39,7 @@ public class AddPlaces extends AppCompatActivity {
     private String phone,timestamp;
     int position = 0;
 
-    private FirebaseAuth firebaseAuth;
+    //private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -70,7 +59,7 @@ public class AddPlaces extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading Data. Please Wait!!");
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseAuth = FirebaseAuth.getInstance();
 
 
         String[] Categories = new String[]{"Beaches", "Hill Station", "Island", "Town & Cities"};
@@ -168,9 +157,9 @@ public class AddPlaces extends AppCompatActivity {
             return;
         } else {
             String filePathName="place_images/"+""+timestamp;
-            StorageReference storageReference= FirebaseStorage.getInstance().getReference(filePathName);
+           // StorageReference storageReference= FirebaseStorage.getInstance().getReference(filePathName);
                 Uri individualImage=imageUris;
-                storageReference.putFile(individualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+              /*  storageReference.putFile(individualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -186,7 +175,7 @@ public class AddPlaces extends AppCompatActivity {
                         progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
             }
             SessionManager sessionManager=new SessionManager(this,SessionManager.SESSION_USERSESSION);
             HashMap<String,String> userDetails=sessionManager.getUserDetailFromSession();
@@ -203,7 +192,7 @@ public class AddPlaces extends AppCompatActivity {
             hashMap.put("userId", "" +phone);
             hashMap.put("placeImage",""+urlStrings);
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+            /*DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
             reference.child(phone).child("Places").child(timestamp).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
@@ -216,7 +205,7 @@ public class AddPlaces extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            });
+            });*/
 
         }
 
