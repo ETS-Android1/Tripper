@@ -17,7 +17,7 @@ public class SessionManager {
 
     //User Session variables
     private static final String IS_LOGIN = "IsLoggedIn";
-    private static final String KEY_USERID="userID";
+   // private static final String KEY_USERID="userID";
     public static final String KEY_FULLNAME = "fullName";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_EMAIL = "email";
@@ -37,11 +37,11 @@ public class SessionManager {
         editor = userSession.edit();
     }
 
-    public void createLoginSession(String userId,String fullName, String username, String email, String password, String age, String gender, String phoneNo) {
+    public void createLoginSession(String fullName, String username, String email, String password, String age, String gender, String phoneNo) {
 
         editor.putBoolean(IS_LOGIN, true);
 
-        editor.putString(KEY_USERID,userId);
+        //editor.putString(KEY_USERID,userId);
         editor.putString(KEY_FULLNAME, fullName);
         editor.putString(KEY_USERNAME, username);
         editor.putString(KEY_EMAIL, email);

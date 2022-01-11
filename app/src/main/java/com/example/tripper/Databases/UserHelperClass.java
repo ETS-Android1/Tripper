@@ -1,37 +1,37 @@
 package com.example.tripper.Databases;
 
 public class UserHelperClass {
-    String fullName,username,email,phoneNo,password,date,gender,userID,createdDate;
+    String name,username,email,phone,password,dateOfBirth,gender,uid,createdDate;
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass(String userID,String fullName, String username, String email, String password, String date, String gender, String phoneNo,String createdDate) {
-        this.userID=userID;
-        this.fullName = fullName;
+    public UserHelperClass(String uid,String name, String username, String email, String password, String dateOfBirth, String gender, String phone,String createdDate) {
+        this.uid=uid;
+        this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.date = date;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.phoneNo = phoneNo;
+        this.phone = phone;
         this.createdDate=createdDate;
     }
 
     public String getUserID() {
-        return userID;
+        return uid;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserID(String uid) {
+        this.uid = uid;
     }
 
     public String getFullName() {
-        return fullName;
+        return name;
     }
 
     public void setFullName(String fullName) {
-        this.fullName = fullName;
+        this.name = name;
     }
 
     public String getUsername() {
@@ -51,11 +51,11 @@ public class UserHelperClass {
     }
 
     public String getPhoneNo() {
-        return phoneNo;
+        return phone;
     }
 
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
+    public void setPhoneNo(String phone) {
+        this.phone = phone;
     }
 
     public String getPassword() {
@@ -67,11 +67,11 @@ public class UserHelperClass {
     }
 
     public String getDate() {
-        return date;
+        return dateOfBirth;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getGender() {
