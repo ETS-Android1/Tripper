@@ -34,7 +34,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="40dp"
             android:orientation="vertical">
 
 
@@ -86,6 +86,37 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login as:"/>
+                <RadioGroup
+                    android:id="@+id/login_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    >
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/login_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="User"/>
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/login_admin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin" />
+                </RadioGroup>
+            </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,9 +138,8 @@
                     android:layout_alignParentRight="true"
                     android:background="#00000000"
                     android:onClick="forgotPasswordScreen"
-                    android:text="Forgot Password"
-                    android:textColor="@color/black"
-                    />
+                    android:text="Forgot Password?"
+                    android:textColor="@color/black" />
             </RelativeLayout>
 
             <Button

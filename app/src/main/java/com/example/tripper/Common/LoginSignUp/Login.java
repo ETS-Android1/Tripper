@@ -8,6 +8,8 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,10 +29,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
-    EditText phoneNumber_editText, password_editText;
-    TextInputLayout phoneNumber, password;
-    CheckBox rememberMe;
-    ImageView backBtn;
+    private EditText phoneNumber_editText, password_editText;
+    private TextInputLayout phoneNumber, password;
+    private CheckBox rememberMe;
+    private ImageView backBtn;
+    private RadioGroup loginGroup;
+    private RadioButton userLogin,adminLogin;
     public static final String SUCCESS = "success";
     public static final String FAILURE = "failure";
 
@@ -45,6 +49,9 @@ public class Login extends AppCompatActivity {
         rememberMe = findViewById(R.id.remember_me);
         phoneNumber_editText = findViewById(R.id.phoneNumber_editText);
         password_editText = findViewById(R.id.password_editText);
+        loginGroup=findViewById(R.id.login_group);
+        userLogin=findViewById(R.id.login_user);
+        adminLogin=findViewById(R.id.login_admin);
 
         //Check whether phone number and password is already saved in Shared Preference or not
         SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_REMEMBERME);
