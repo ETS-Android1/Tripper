@@ -178,8 +178,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         categoriesRecycler.setAdapter(adapter);
     }
 
-    public  void callLocationContributorScreen(View view){
-        startActivity(new Intent(getApplicationContext(), LocationContributorStartupScreen.class));
-    }
 
+    public void LocationCall(View view) {
+        startActivity(new Intent(UserDashboard.this,UserLocation.class));
+    }
 }

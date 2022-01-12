@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Tripper"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".User.UserLocation"
+            android:exported="false" />
+        <activity
             android:name=".User.PlaceCatalogue"
             android:exported="false" />
 
