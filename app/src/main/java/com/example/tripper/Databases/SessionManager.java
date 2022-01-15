@@ -14,10 +14,11 @@ public class SessionManager {
     //Session names
     public static final String SESSION_USERSESSION="userLoginSession";
     public static final String SESSION_REMEMBERME="rememberMe";
+    public static final String SESSION_LOCATION="Munger";
 
     //User Session variables
     private static final String IS_LOGIN = "IsLoggedIn";
-   // private static final String KEY_USERID="userID";
+    public static final String KEY_USERID="userID";
     public static final String KEY_FULLNAME = "fullName";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_EMAIL = "email";
@@ -37,11 +38,11 @@ public class SessionManager {
         editor = userSession.edit();
     }
 
-    public void createLoginSession(String fullName, String username, String email, String password, String age, String gender, String phoneNo) {
+    public void createLoginSession(String userId,String fullName, String username, String email, String password, String age, String gender, String phoneNo) {
 
         editor.putBoolean(IS_LOGIN, true);
 
-        //editor.putString(KEY_USERID,userId);
+        editor.putString(KEY_USERID,userId);
         editor.putString(KEY_FULLNAME, fullName);
         editor.putString(KEY_USERNAME, username);
         editor.putString(KEY_EMAIL, email);
@@ -53,9 +54,21 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void LocationSession(String location){
+        editor.putString(SESSION_LOCATION,location);
+    }
+    public boolean getLocationSession(){
+        if(SESSION_LOCATION.equals("noLocation")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
     public HashMap<String, String> getUserDetailFromSession() {
         HashMap<String, String> userData = new HashMap<>();
 
+        userData.put(KEY_USERID,userSession.getString(KEY_USERID,null));
         userData.put(KEY_FULLNAME, userSession.getString(KEY_FULLNAME, null));
         userData.put(KEY_USERNAME, userSession.getString(KEY_USERNAME, null));
         userData.put(KEY_EMAIL, userSession.getString(KEY_EMAIL, null));

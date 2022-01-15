@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,6 +38,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     RecyclerView.Adapter adapter;
     GradientDrawable gradient1, gradient2, gradient3, gradient4, gradient5;
     ImageView menuIcon;
+    AppCompatTextView locationName;
+    ImageView locationImage;
 
     //Drawer Menu
     DrawerLayout drawerLayout;
@@ -58,6 +61,37 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
 
+        locationName=findViewById(R.id.locationName);
+        locationImage=findViewById(R.id.locationImage);
+
+        locationName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getLocation();
+            }
+        });
+
+        locationImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getLocation();
+            }
+        });
+
+
+
+
+
+        SessionManager sessionManager=new SessionManager(this,SessionManager.SESSION_LOCATION);
+        if(!sessionManager.getLocationSession()){
+            locationImage.setVisibility(View.VISIBLE);
+            locationName.setVisibility(View.INVISIBLE);
+        }else{
+            locationName.setVisibility(View.VISIBLE);
+            locationName.setText(SessionManager.SESSION_LOCATION);
+            locationImage.setVisibility(View.INVISIBLE);
+        }
+
 
         navigationDrawer();
 
@@ -66,7 +100,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featuredRecycler();
         mostViewedRecycler();
         categoriesRecycler();
-        ;
+    }
+
+    private void getLocation() {
+        startActivity(new Intent(this,UserLocation.class));
     }
 
     //Navigation Drawer Functions
@@ -176,10 +213,5 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         adapter = new CategoriesAdapter(categoriesHelperClasses);
         categoriesRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         categoriesRecycler.setAdapter(adapter);
-    }
-
-
-    public void LocationCall(View view) {
-        startActivity(new Intent(UserDashboard.this,UserLocation.class));
     }
 }

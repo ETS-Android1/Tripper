@@ -2,28 +2,48 @@ package com.example.tripper.LocationContributor;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
+
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,22 +51,22 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AddPlaces extends AppCompatActivity {
 
     private CircleImageView Imagepicker;
-    private Uri imageUris;
-    private String urlStrings;
+    private String encodeImageString;
+    private Button addBtn;
+    Bitmap bitmap;
+    private static final String url="http://192.168.1.32/tripper/addPlaces.php";
     private ProgressDialog progressDialog;
     private static final int PICK_IMAGES_CODES = 0;
     private TextInputLayout title, description, categories, bestVisitTime, budget, address;
-    private String phone,timestamp;
-    int position = 0;
-
-    //private FirebaseAuth firebaseAuth;
-
+    private String uid,timestamp;
+    private String placeTitle, placeDescription, placeCategory, placeVisitTime, placeBudget, placeAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_places);
 
+        addBtn=findViewById(R.id.addBtn);
         Imagepicker = findViewById(R.id.image_selection);
         title = findViewById(R.id.addplace_title);
         description = findViewById(R.id.addplace_description);
@@ -59,9 +79,6 @@ public class AddPlaces extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading Data. Please Wait!!");
 
-        //firebaseAuth = FirebaseAuth.getInstance();
-
-
         String[] Categories = new String[]{"Beaches", "Hill Station", "Island", "Town & Cities"};
 
         ArrayAdapter<String> adapter =
@@ -73,17 +90,64 @@ public class AddPlaces extends AppCompatActivity {
         Imagepicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Dexter.withActivity(AddPlaces.this)
+                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                        .withListener(new PermissionListener() {
+                            @Override
+                            public void onPermissionGranted(PermissionGrantedResponse response) {
+                                Intent intent=new Intent(Intent.ACTION_PICK);
+                                intent.setType("image/*");
+                                startActivityForResult(Intent.createChooser(intent,"Browse Image"),PICK_IMAGES_CODES);
+                            }
 
-                // setting type to select to be image
-                intent.setType("image/*");
+                            @Override
+                            public void onPermissionDenied(PermissionDeniedResponse response) {
 
-                // allowing multiple image to be selected
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGES_CODES);
+                            }
+
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                                token.continuePermissionRequest();
+                            }
+                        }).check();
             }
         });
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inputData();
+            }
+        });
+
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGES_CODES && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+            Uri imageUris = data.getData();
+            try{
+                Imagepicker.setImageURI(imageUris);
+                InputStream inputStream=getContentResolver().openInputStream(imageUris);
+                bitmap= BitmapFactory.decodeStream(inputStream);
+                encodeBitMapImage(bitmap);
+            }catch (Exception e){
+
+            }
+        }
+    }
+
+    private void encodeBitMapImage(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+
+        byte[] bytesofimage=byteArrayOutputStream.toByteArray();
+        encodeImageString=android.util.Base64.encodeToString(bytesofimage, Base64.DEFAULT);
 
     }
 
@@ -92,11 +156,7 @@ public class AddPlaces extends AppCompatActivity {
         AddPlaces.super.onBackPressed();
     }
 
-    public void addPlace(View view) {
-        inputData();
-    }
 
-    private String placeTitle, placeDescription, placeCategory, placeVisitTime, placeBudget, placeAddress;
 
     private void inputData() {
         placeTitle = title.getEditText().getText().toString().trim();
@@ -144,81 +204,43 @@ public class AddPlaces extends AppCompatActivity {
             address.setError(null);
         }
 
-        addPlaceToFirebase();
+        addPlaceToDatabase();
     }
 
-    private void addPlaceToFirebase() {
-        progressDialog.show();
-
-        timestamp = "" + System.currentTimeMillis();
-
-        if (imageUris == null) {
-            Toast.makeText(this, "One photo should be uploaded", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            String filePathName="place_images/"+""+timestamp;
-           // StorageReference storageReference= FirebaseStorage.getInstance().getReference(filePathName);
-                Uri individualImage=imageUris;
-              /*  storageReference.putFile(individualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                urlStrings=String.valueOf(uri);
-                            }
-                        });
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-            }
+    private void addPlaceToDatabase() {
+            progressDialog.show();
             SessionManager sessionManager=new SessionManager(this,SessionManager.SESSION_USERSESSION);
             HashMap<String,String> userDetails=sessionManager.getUserDetailFromSession();
-            phone=userDetails.get(SessionManager.KEY_PHONENUMBER);
+            uid=userDetails.get(SessionManager.KEY_USERID);
 
-            HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("placeId", "" + timestamp);
-            hashMap.put("placeTitle", "" + placeTitle);
-            hashMap.put("placeDescription", "" + placeDescription);
-            hashMap.put("placeCategory", "" + placeCategory);
-            hashMap.put("placeVisitTime", "" + placeVisitTime);
-            hashMap.put("placeBudget", "" + placeBudget);
-            hashMap.put("placeAddress", "" + placeAddress);
-            hashMap.put("userId", "" +phone);
-            hashMap.put("placeImage",""+urlStrings);
+            //Volley
+        StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-            /*DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-            reference.child(phone).child("Places").child(timestamp).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    Toast.makeText(getApplicationContext(),"Place added Successfully",Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });*/
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map=new HashMap<>();
+                map.put("title", "" + placeTitle);
+                map.put("description", "" + placeDescription);
+                map.put("category", "" + placeCategory);
+                map.put("visitTime", "" + placeVisitTime);
+                map.put("budget", "" + placeBudget);
+                map.put("address", "" + placeAddress);
+                map.put("imagePlace",""+encodeImageString);
+                map.put("uid", "" +uid);
+                return map;
+            }
+        };
 
         }
 
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == PICK_IMAGES_CODES && resultCode == RESULT_OK
-                && data != null && data.getData() != null )
-        {
-            imageUris = data.getData();
-            Imagepicker.setImageURI(imageUris);
-        }
-    }
 }

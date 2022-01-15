@@ -209,14 +209,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/addBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Place"
-            android:layout_margin="30dp"
             android:layout_below="@id/addplace_address"
-            android:onClick="addPlace"/>
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:onClick="addPlace"
+            android:text="Add Place" />
 
 
 
