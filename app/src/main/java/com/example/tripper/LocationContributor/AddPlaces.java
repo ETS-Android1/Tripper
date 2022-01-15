@@ -24,9 +24,11 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -38,6 +40,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,10 +58,9 @@ public class AddPlaces extends AppCompatActivity {
     private Button addBtn;
     Bitmap bitmap;
     private static final String url="http://192.168.1.32/tripper/addPlaces.php";
-    private ProgressDialog progressDialog;
     private static final int PICK_IMAGES_CODES = 0;
     private TextInputLayout title, description, categories, bestVisitTime, budget, address;
-    private String uid,timestamp;
+    private String uid;
     private String placeTitle, placeDescription, placeCategory, placeVisitTime, placeBudget, placeAddress;
 
     @Override
@@ -75,9 +77,6 @@ public class AddPlaces extends AppCompatActivity {
         budget = findViewById(R.id.addplace_budget);
         address = findViewById(R.id.addplace_address);
 
-        //progress dialog
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Uploading Data. Please Wait!!");
 
         String[] Categories = new String[]{"Beaches", "Hill Station", "Island", "Town & Cities"};
 
@@ -208,7 +207,6 @@ public class AddPlaces extends AppCompatActivity {
     }
 
     private void addPlaceToDatabase() {
-            progressDialog.show();
             SessionManager sessionManager=new SessionManager(this,SessionManager.SESSION_USERSESSION);
             HashMap<String,String> userDetails=sessionManager.getUserDetailFromSession();
             uid=userDetails.get(SessionManager.KEY_USERID);
@@ -217,12 +215,18 @@ public class AddPlaces extends AppCompatActivity {
         StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                title.getEditText().setText("");
+                description.getEditText().setText("");
+                bestVisitTime.getEditText().setText("");
+                budget.getEditText().setText("");
+                address.getEditText().setText("");
+                Imagepicker.setImageURI(Uri.parse("android.resource://com.example.tripper/drawable/add_100px.png"));
+                Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
             }
         }){
             @Nullable
@@ -241,6 +245,8 @@ public class AddPlaces extends AppCompatActivity {
             }
         };
 
+        RequestQueue queue= Volley.newRequestQueue(getApplicationContext());
+        queue.add(request);
         }
 
 }
