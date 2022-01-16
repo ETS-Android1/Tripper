@@ -1,26 +1,26 @@
 package com.example.tripper.LocationContributor;
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
-import android.app.ProgressDialog;
-import android.content.ClipData;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -39,9 +39,11 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -57,11 +59,26 @@ public class AddPlaces extends AppCompatActivity {
     private String encodeImageString;
     private Button addBtn;
     Bitmap bitmap;
+    int selectedIndex;
     private static final String url="http://192.168.1.32/tripper/addPlaces.php";
     private static final int PICK_IMAGES_CODES = 0;
     private TextInputLayout title, description, categories, bestVisitTime, budget, address;
     private String uid;
     private String placeTitle, placeDescription, placeCategory, placeVisitTime, placeBudget, placeAddress;
+
+
+    // array lists
+    // for the spinner in the format : City_no : City , State. Eg : 144 : New Delhi , India
+    ArrayList<String> listSpinner=new ArrayList<String>();
+    // to store the city and state in the format : City , State. Eg: New Delhi , India
+    ArrayList<String> listAll=new ArrayList<String>();
+    // for listing all states
+    ArrayList<String> listState=new ArrayList<String>();
+    // for listing all cities
+    ArrayList<String> listCity=new ArrayList<String>();
+    // access all auto complete text views
+    AutoCompleteTextView act;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +93,7 @@ public class AddPlaces extends AppCompatActivity {
         bestVisitTime = findViewById(R.id.addplace_bestVisitTime);
         budget = findViewById(R.id.addplace_budget);
         address = findViewById(R.id.addplace_address);
-
+        callAll();
 
         String[] Categories = new String[]{"Beaches", "Hill Station", "Island", "Town & Cities"};
 
@@ -123,6 +140,101 @@ public class AddPlaces extends AppCompatActivity {
 
 
 
+
+    public void callAll()
+    {
+        obj_list();
+        addToAll();
+    }
+
+
+    // Get the content of cities.json from assets directory and store it as string
+    public String getJson()
+    {
+        String json=null;
+        try
+        {
+            // Opening cities.json file
+            InputStream is = getAssets().open("cities.json");
+            // is there any content in the file
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            // read values in the byte array
+            is.read(buffer);
+            // close the stream --- very important
+            is.close();
+            // convert byte to string
+            json = new String(buffer, "UTF-8");
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+            return json;
+        }
+        return json;
+    }
+
+    // This add all JSON object's data to the respective lists
+    void obj_list()
+    {
+        // Exceptions are returned by JSONObject when the object cannot be created
+        try
+        {
+            // Convert the string returned to a JSON object
+            JSONObject jsonObject=new JSONObject(getJson());
+            // Get Json array
+            JSONArray array=jsonObject.getJSONArray("array");
+            // Navigate through an array item one by one
+            for(int i=0;i<array.length();i++)
+            {
+                // select the particular JSON data
+                JSONObject object=array.getJSONObject(i);
+                String city=object.getString("name");
+                String state=object.getString("state");
+                // add to the lists in the specified format
+                listSpinner.add(String.valueOf(i+1)+" : "+city+" , "+state);
+                listAll.add(String.valueOf(i+1)+" : "+city+" , "+state);
+                listCity.add(city);
+                listState.add(state);
+            }
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    // The first auto complete text view
+    void addToAll()
+    {
+        act=findViewById(R.id.actAll);
+        adapterSetting(listAll);
+    }
+
+
+
+    // setting adapter for auto complete text views
+    void adapterSetting(ArrayList arrayList)
+    {
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,arrayList);
+        act.setAdapter(adapter);
+        hideKeyBoard();
+    }
+
+    // hide keyboard on selecting a suggestion
+    public void hideKeyBoard()
+    {
+        act.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+            }
+        });
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -165,6 +277,8 @@ public class AddPlaces extends AppCompatActivity {
         placeBudget = budget.getEditText().getText().toString().trim();
         placeAddress = address.getEditText().getText().toString().trim();
 
+        String city=act.getText().toString();
+        selectedIndex= Integer.parseInt(city.replaceAll("[^0-9]", ""));
         //short Validation
         if (TextUtils.isEmpty(placeTitle)) {
             title.setError("Title cannot be empty");
@@ -220,7 +334,6 @@ public class AddPlaces extends AppCompatActivity {
                 bestVisitTime.getEditText().setText("");
                 budget.getEditText().setText("");
                 address.getEditText().setText("");
-                Imagepicker.setImageURI(Uri.parse("android.resource://com.example.tripper/drawable/add_100px.png"));
                 Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
@@ -232,6 +345,7 @@ public class AddPlaces extends AppCompatActivity {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+                Log.d("Harsh",""+selectedIndex+placeTitle+placeCategory);
                 Map<String, String> map=new HashMap<>();
                 map.put("title", "" + placeTitle);
                 map.put("description", "" + placeDescription);
@@ -241,6 +355,7 @@ public class AddPlaces extends AppCompatActivity {
                 map.put("address", "" + placeAddress);
                 map.put("imagePlace",""+encodeImageString);
                 map.put("uid", "" +uid);
+                map.put("locationId",""+selectedIndex);
                 return map;
             }
         };

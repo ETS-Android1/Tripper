@@ -210,16 +210,44 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <LinearLayout
+            android:id="@+id/spCityState"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/addplace_address"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:startIconDrawable="@drawable/city_24px"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidthFocused="2dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_weight="1"
+                    android:hint="Select City"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/addplace_address"
+            android:layout_below="@id/spCityState"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="30dp"
-            android:onClick="addPlace"
             android:text="Add Place" />
 
 

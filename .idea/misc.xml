@@ -38,7 +38,7 @@
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/drawable/round_corner.xml" value="0.2125" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/drawable/toolbar.xml" value="0.15092592592592594" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout-v21/activity_location_contributor_sign_up.xml" value="0.19635416666666666" />
-        <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_add_places.xml" value="0.22" />
+        <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_add_places.xml" value="0.2" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_contributor_login.xml" value="0.22" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_destination.xml" value="0.15" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
@@ -60,6 +60,7 @@
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/fragment_contributor_dashboard.xml" value="0.18" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/fragment_contributor_profile.xml" value="0.18" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/fragment_contributor_settings.xml" value="0.22" />
+        <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/list_layout.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/splash_screen.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/menu/main_menu.xml" value="0.18" />
