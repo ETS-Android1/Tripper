@@ -23,19 +23,20 @@ public class PlaceCatalogue extends AppCompatActivity {
 
     RecyclerView recyclerView;
     String category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_catalogue);
-        recyclerView=findViewById(R.id.recView);
+        recyclerView = findViewById(R.id.recView);
         category = getIntent().getStringExtra("PLACE_CATEGORY");
         recyclerView.setLayoutManager(new LinearLayoutManager(this,
-                LinearLayoutManager.VERTICAL,false));
-        processdata();
+                LinearLayoutManager.VERTICAL, false));
+        processData();
     }
 
-    private void processdata() {
-        Call<List<responseModelPlaces>> call= apiController
+    private void processData() {
+        Call<List<responseModelPlaces>> call = apiController
                 .getInstance()
                 .getapi()
                 .gdata(category);
@@ -43,9 +44,9 @@ public class PlaceCatalogue extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<responseModelPlaces>> call,
                                    Response<List<responseModelPlaces>> response) {
-                    List<responseModelPlaces> data=response.body();
-                Log.d("Harsh",data.toString());
-                myPlaceAdapter adapter=new myPlaceAdapter(data);
+                List<responseModelPlaces> data = response.body();
+                Log.d("Harsh", data.toString());
+                myPlaceAdapter adapter = new myPlaceAdapter(data, getApplicationContext());
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(adapter);
             }

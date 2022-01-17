@@ -1,20 +1,18 @@
 package com.example.tripper.HelperClasses;
 
 public class responseModelPlaces {
-    String placeId, Title, Description,locationId, placeImage ;
+    String placeId, Title,placeImage,name,state ;
 
     public responseModelPlaces() {
     }
 
-    public responseModelPlaces(String placeId, String title, String description, String locationId,
-                               String placeImage) {
+    public responseModelPlaces(String placeId, String title, String placeImage, String name, String state) {
         this.placeId = placeId;
         Title = title;
-        Description = description;
-        this.locationId = locationId;
         this.placeImage = placeImage;
+        this.name = name;
+        this.state = state;
     }
-
 
     public String getPlaceId() {
         return placeId;
@@ -32,27 +30,27 @@ public class responseModelPlaces {
         Title = title;
     }
 
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public String getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(String locationId) {
-        this.locationId = locationId;
-    }
-
     public String getPlaceImage() {
         return placeImage;
     }
 
     public void setPlaceImage(String placeImage) {
         this.placeImage = placeImage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
