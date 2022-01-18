@@ -1,43 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardLayoutPlace"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/parentlayout">
+    android:layout_margin="10sp"
+    android:background="@color/light_white"
+    android:orientation="horizontal"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="8dp"
+    app:contentPadding="5dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@color/colorPrimary"
-            android:id="@+id/img"/>
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add_100px" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/img"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
-                android:textSize="30sp"
-                android:id="@+id/titlePlace"/>
+                android:background="@drawable/shape_rect"
+                android:padding="5dp"
+                android:text="#1 Trending"
+                android:textColor="#43AD47" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/titlePlace"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="description"
-                android:id="@+id/description_place"/>
+                android:text="Title"
+                android:textColor="@color/black"
+                android:textSize="30dp" />
+
+
+            <TextView
+                android:id="@+id/description_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Maharastra"
+                android:textColor="@color/black" />
         </LinearLayout>
-    </LinearLayout>
-</androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="20dp">
+
+            <ImageView
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:onClick="changeHeart"
+                android:src="@drawable/ic_baseline_favorite_border_24" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

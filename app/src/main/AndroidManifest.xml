@@ -16,13 +16,12 @@
         android:theme="@style/Theme.Tripper"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".User.UserPlaceInfo"
-            android:exported="false" />
-        <activity
             android:name=".User.UserLocation"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".User.PlaceCatalogue"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:exported="false" />
 
         <meta-data
