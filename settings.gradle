@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Tripper"
 include ':app'
+include ':app:myapplication'
