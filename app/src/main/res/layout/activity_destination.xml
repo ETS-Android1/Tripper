@@ -7,7 +7,7 @@
     tools:context=".User.Destination">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/placeImageDisplay"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
@@ -17,16 +17,18 @@
             app:srcCompat="@drawable/manali" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:onClick="callBackScreen"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back_16px" />
+            app:srcCompat="@drawable/back_16px"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/placeTitleDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -36,16 +38,16 @@
             android:textColor="@android:color/background_dark"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/placeImageDisplay" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintBottom_toBottomOf="@+id/placeTitleDisplay"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="@+id/placeTitleDisplay"
             app:srcCompat="@drawable/star_48px" />
 
         <TextView
@@ -69,8 +71,8 @@
             android:text="Best Time to Visit"
             android:textColor="#044363"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintStart_toStartOf="@+id/placeTitleDisplay"
+            app:layout_constraintTop_toBottomOf="@+id/placeTitleDisplay" />
 
         <TextView
             android:id="@+id/textView9"
@@ -84,6 +86,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <TextView
+            android:id="@+id/bestTimeVisitDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -95,6 +98,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView8" />
 
         <TextView
+            android:id="@+id/budgetDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -106,7 +110,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView9" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/likeView"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -116,20 +120,20 @@
             app:srcCompat="@drawable/love_80px" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/viewMapBtn"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/gradient_start_color"
-            android:background="@drawable/toolbar"
+            android:backgroundTint="?attr/colorSecondaryVariant"
+            android:backgroundTintMode="add"
             android:fontFamily="@font/arbutus"
             android:text="View on Map"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+            app:layout_constraintBottom_toBottomOf="@+id/likeView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView11"
-            app:layout_constraintTop_toTopOf="@+id/imageView11" />
+            app:layout_constraintStart_toEndOf="@+id/likeView"
+            app:layout_constraintTop_toTopOf="@+id/likeView" />
 
         <TextView
             android:id="@+id/textView13"
@@ -139,31 +143,33 @@
             android:layout_marginTop="25dp"
             android:fontFamily="@font/anonymous_pro_bold"
             android:text="About "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/background_dark"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/descriptionDisplay"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
             android:text="Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/viewMapBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="@+id/textView13"
             app:layout_constraintTop_toBottomOf="@+id/textView13"
-            app:layout_constraintVertical_bias="0.111" />
+            app:layout_constraintVertical_bias="0.07999998" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/viewMapBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="0.38"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionDisplay"
+            app:layout_constraintVertical_bias="0.050000012"
             tools:context=".RoundBarSampleActivity">
 
                 <com.example.tripper.HelperClasses.rating.RatingReviews xmlns:bar="http://schemas.android.com/apk/res-auto"
@@ -253,5 +259,18 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/ratePlaceBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Rate this place"
+            app:layout_constraintBottom_toTopOf="@+id/viewMapBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.017" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

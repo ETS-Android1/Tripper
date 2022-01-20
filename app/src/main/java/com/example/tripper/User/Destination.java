@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tripper.HelperClasses.rating.BarLabels;
@@ -15,8 +18,11 @@ import java.util.Random;
 
 public class Destination extends AppCompatActivity {
 
-    TextView placeDisplayId;
-    String placeId;
+    TextView placeDisplayId,placeTitleDisplay,bestVisitTime,budgetDisplay,descriptionDisplay;
+    Button ratePlaceBtn,viewMapBtn;
+    ImageView likeView;
+    String placeId,modifiedDate,address;
+    ImageView placeImageDisplay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,15 @@ public class Destination extends AppCompatActivity {
         placeDisplayId=findViewById(R.id.placeDisplyId);
         placeId=getIntent().getStringExtra("placeId");
         placeDisplayId.setText(placeId);
+        placeTitleDisplay=findViewById(R.id.placeTitleDisplay);
+        bestVisitTime=findViewById(R.id.bestTimeVisitDisplay);
+        budgetDisplay=findViewById(R.id.budgetDisplay);
+        descriptionDisplay=findViewById(R.id.descriptionDisplay);
+        ratePlaceBtn=findViewById(R.id.ratePlaceBtn);
+        viewMapBtn=findViewById(R.id.viewMapBtn);
+        likeView=findViewById(R.id.likeView);
+        placeImageDisplay=findViewById(R.id.placeImageDisplay);
+
 
         RatingReviews ratingReviews = (RatingReviews) findViewById(R.id.rating_reviews);
 
@@ -50,5 +65,9 @@ public class Destination extends AppCompatActivity {
 
 
 
+    }
+
+    public void callBackScreen(View view) {
+        Destination.super.onBackPressed();
     }
 }
