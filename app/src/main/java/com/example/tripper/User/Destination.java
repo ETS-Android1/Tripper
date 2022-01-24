@@ -3,8 +3,11 @@ package com.example.tripper.User;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +37,7 @@ public class Destination extends AppCompatActivity {
     TextView placeDisplayId,placeTitleDisplay,bestVisitTime,budgetDisplay,descriptionDisplay;
     Button viewMapBtn;
     ImageView likeView;
-    String placeId,modifiedDate,address;
+    String placeId,modifiedDate,address,placeState;
     ImageView placeImageDisplay;
     ConstraintLayout constraintLayout;
     @Override
@@ -43,6 +46,7 @@ public class Destination extends AppCompatActivity {
         setContentView(R.layout.activity_destination);
         placeDisplayId=findViewById(R.id.placeDisplyId);
         placeId=getIntent().getStringExtra("placeId");
+        placeState=getIntent().getStringExtra("location");
         placeDisplayId.setText(placeId);
         placeTitleDisplay=findViewById(R.id.placeTitleDisplay);
         bestVisitTime=findViewById(R.id.bestTimeVisitDisplay);
@@ -83,6 +87,27 @@ public class Destination extends AppCompatActivity {
                 ratePlace();
             }
         });
+
+        viewMapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openInMap();
+            }
+        });
+    }
+
+    private void openInMap() {
+        Log.d("harsh", "openInMap: "+placeTitleDisplay.getText()+","+placeState);
+        Uri mapUri;
+        if (placeState==null) {
+            mapUri = Uri.parse("geo:0,0?q=" + Uri.encode(placeTitleDisplay.getText() + "," +address));
+        }else{
+            mapUri = Uri.parse("geo:0,0?q=" + Uri.encode(placeTitleDisplay.getText() + "," + placeState));
+
+        }
+        Intent intent=new Intent(Intent.ACTION_VIEW,mapUri);
+        intent.setPackage("com.google.android.apps.maps");
+        startActivity(intent);
     }
 
     private void ratePlace() {

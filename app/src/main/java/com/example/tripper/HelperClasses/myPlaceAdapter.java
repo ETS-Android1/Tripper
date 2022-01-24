@@ -57,6 +57,7 @@ public class myPlaceAdapter extends RecyclerView.Adapter<myPlaceAdapter.myViewHo
             public void onClick(View view) {
                 Intent intent = new Intent(context, Destination.class);
                 intent.putExtra("placeId", data.get(position).getPlaceId());
+                intent.putExtra("location",data.get(position).getName()+","+data.get(position).getState());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
