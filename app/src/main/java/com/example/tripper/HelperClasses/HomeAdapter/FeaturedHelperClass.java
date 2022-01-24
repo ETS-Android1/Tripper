@@ -1,25 +1,40 @@
 package com.example.tripper.HelperClasses.HomeAdapter;
 
 public class FeaturedHelperClass {
-    int image;
-    String title;
-    String description;
+    String placeImage;
+    String Title;
+    String Description;
 
-    public FeaturedHelperClass(int image, String title, String description) {
-        this.image = image;
-        this.title = title;
-        this.description = description;
+    public FeaturedHelperClass() {
     }
 
-    public int getImage() {
-        return image;
+    public FeaturedHelperClass(String placeImage, String title, String description) {
+        this.placeImage = placeImage;
+        Title = title;
+        Description = description;
+    }
+
+    public String getPlaceImage() {
+        return placeImage;
+    }
+
+    public void setPlaceImage(String placeImage) {
+        this.placeImage = placeImage;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 }

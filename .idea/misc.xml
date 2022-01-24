@@ -31,6 +31,7 @@
         <entry key="..\:/Users/Harsh/AndroidStudioProjects/Tripper/app/src/main/res/layout/slides_layout.xml" value="0.25" />
         <entry key="..\:/Users/Harsh/AndroidStudioProjects/Tripper/app/src/main/res/layout/splash_screen.xml" value="0.25" />
         <entry key="..\:/Users/Harsh/AndroidStudioProjects/Tripper/app/src/main/res/menu/main_menu.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/Harsh/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_dropdown_item_1line.xml" value="0.1" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/myapplication/src/main/res/layout/bar.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/drawable/blue1.xml" value="0.15092592592592594" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/drawable/blue2.xml" value="0.75" />
@@ -45,7 +46,7 @@
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_add_places.xml" value="0.2" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_all_categoires.xml" value="0.1" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_contributor_login.xml" value="0.22" />
-        <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_destination.xml" value="0.14" />
+        <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_destination.xml" value="0.18" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_forgot_password_success_message.xml" value="0.15579710144927536" />
         <entry key="..\:/Users/Harsh/StudioProjects/Tripper/app/src/main/res/layout/activity_location_contributor.xml" value="0.18795289855072464" />

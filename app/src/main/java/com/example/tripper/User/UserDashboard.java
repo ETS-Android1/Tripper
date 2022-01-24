@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripper.Common.LoginSignUp.LocationContributorStartupScreen;
 import com.example.tripper.Common.LoginSignUp.Login;
+import com.example.tripper.Databases.FeaturedPlacesController;
 import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.HelperClasses.HomeAdapter.CategoriesAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.CategoriesHelperClass;
@@ -25,11 +27,19 @@ import com.example.tripper.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.tripper.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.tripper.HelperClasses.HomeAdapter.MostViewedHelperClass;
+import com.example.tripper.HelperClasses.apiController;
+import com.example.tripper.HelperClasses.myPlaceAdapter;
+import com.example.tripper.HelperClasses.responseModelPlaces;
 import com.example.tripper.LocationContributor.LocationContributorDashboard;
 import com.example.tripper.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -185,15 +195,36 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featuredRecycler.setHasFixedSize(true);
         featuredRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        ArrayList<FeaturedHelperClass> featuredLocations = new ArrayList<>();
-        featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
-        featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
-        featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
 
-        adapter = new FeaturedAdapter(featuredLocations);
-        featuredRecycler.setAdapter(adapter);
+        Call<List<FeaturedHelperClass>> call = FeaturedPlacesController
+                .getInstance()
+                .getApiSet()
+                .mostRated();
+
+        call.enqueue(new Callback<List<FeaturedHelperClass>>() {
+            @Override
+            public void onResponse(Call<List<FeaturedHelperClass>> call,
+                                   Response<List<FeaturedHelperClass>> response) {
+                List<FeaturedHelperClass> data = response.body();
+                adapter = new FeaturedAdapter(data);
+                featuredRecycler.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<FeaturedHelperClass>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
 
 
+            //ArrayList<FeaturedHelperClass> featuredLocations = new ArrayList<>();
+        //featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
+        //featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
+        //featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
+
+
+
+
+    });
     }
 
     private void categoriesRecycler() {

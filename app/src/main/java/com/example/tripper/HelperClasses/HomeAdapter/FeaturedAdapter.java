@@ -1,5 +1,6 @@
 package com.example.tripper.HelperClasses.HomeAdapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,15 +12,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.tripper.R;
 import com.example.tripper.User.Destination;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.FeaturedViewHolder> {
-    ArrayList<FeaturedHelperClass> featuredLocations;
+    List<FeaturedHelperClass> featuredLocations;
 
-    public FeaturedAdapter(ArrayList<FeaturedHelperClass> featuredLocations) {
+    public FeaturedAdapter(List<FeaturedHelperClass> featuredLocations) {
         this.featuredLocations = featuredLocations;
 
     }
@@ -34,9 +37,10 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FeaturedViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FeaturedViewHolder holder, @SuppressLint("RecyclerView") int position) {
         FeaturedHelperClass featuredHelperClass=featuredLocations.get(position);
-        holder.imageView.setImageResource(featuredHelperClass.getImage());
+        Glide.with(holder.title.getContext()).load("http://192.168.1.32/tripper/images/"
+                + featuredHelperClass.getPlaceImage()).into(holder.imageView);
         holder.title.setText(featuredHelperClass.getTitle());
         holder.description.setText(featuredHelperClass.getDescription());
 

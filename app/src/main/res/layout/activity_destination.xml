@@ -9,16 +9,17 @@
         <ImageView
             android:id="@+id/placeImageDisplay"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/manali" />
 
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:onClick="callBackScreen"
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/arbutus"
-            android:text="Best Time to Visit"
+            android:text="Best Visit Time:"
             android:textColor="#044363"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/placeTitleDisplay"
@@ -80,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/arbutus"
-            android:text="Budget: "
+            android:text="Budget Approx:  "
             android:textColor="#044363"
             app:layout_constraintStart_toStartOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -153,6 +154,7 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
             android:text="Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"
             app:layout_constraintBottom_toTopOf="@+id/viewMapBtn"
             app:layout_constraintEnd_toEndOf="parent"
@@ -259,18 +261,5 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:id="@+id/ratePlaceBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:text="Rate this place"
-            app:layout_constraintBottom_toTopOf="@+id/viewMapBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            app:layout_constraintVertical_bias="0.017" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

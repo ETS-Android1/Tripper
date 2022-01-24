@@ -1,14 +1,14 @@
 package com.example.tripper.HelperClasses;
 
 public class placeResponseModel {
-    String title,Description,VisitTime,Budget,Address,placeImage,modifiedDate;
+    String Title,Description,VisitTime,Budget,Address,placeImage,modifiedDate;
 
     public placeResponseModel() {
     }
 
-    public placeResponseModel(String title, String description, String visitTime, String budget,
+    public placeResponseModel(String Title, String description, String visitTime, String budget,
                               String address, String placeImage, String modifiedDate) {
-        this.title = title;
+        this.Title = Title;
         Description = description;
         VisitTime = visitTime;
         Budget = budget;
@@ -18,11 +18,11 @@ public class placeResponseModel {
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.Title = title;
     }
 
     public String getDescription() {

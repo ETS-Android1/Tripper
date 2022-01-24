@@ -13,7 +13,4 @@ import retrofit2.http.Query;
 public interface apiset {
     @GET("placesFetch.php")
     Call<List<responseModelPlaces>> gdata(@Query("category") String category);
-
-    @GET("placeDescription.php")
-    Call<placeResponseModel> retrieve(@Query("placeId") String placeId);
 }
