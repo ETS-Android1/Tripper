@@ -48,8 +48,10 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(view.getContext(), Destination.class);
-                    view.getContext().startActivity(intent);
+                Intent intent = new Intent(view.getContext(), Destination.class);
+                intent.putExtra("placeId", featuredLocations.get(position).getPlaceId());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                view.getContext().startActivity(intent);
             }
         });
 

@@ -4,14 +4,16 @@ public class FeaturedHelperClass {
     String placeImage;
     String Title;
     String Description;
+    String placeId;
 
     public FeaturedHelperClass() {
     }
 
-    public FeaturedHelperClass(String placeImage, String title, String description) {
+    public FeaturedHelperClass(String placeImage, String title, String description, String placeId) {
         this.placeImage = placeImage;
         Title = title;
         Description = description;
+        this.placeId = placeId;
     }
 
     public String getPlaceImage() {
@@ -36,5 +38,13 @@ public class FeaturedHelperClass {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public String getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
     }
 }
