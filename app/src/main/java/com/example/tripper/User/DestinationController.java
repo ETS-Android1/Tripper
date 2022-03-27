@@ -1,5 +1,6 @@
 package com.example.tripper.User;
 
+import com.example.tripper.Common.ConnectionAddress;
 import com.example.tripper.Databases.LoginApiSet;
 import com.example.tripper.Databases.PlaceApiSet;
 import com.example.tripper.Databases.apiset;
@@ -9,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DestinationController {
 
-    private static final String url="http://192.168.1.32/tripper/";
+    private static final String url= ConnectionAddress.ipaddress;
     private static DestinationController clientObject;
     private static Retrofit retrofit;
 

@@ -1,12 +1,13 @@
 package com.example.tripper.HelperClasses;
 
+import com.example.tripper.Common.ConnectionAddress;
 import com.example.tripper.Databases.apiset;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class apiController {
-    private static final String url="http://192.168.1.32/tripper/";
+    private static final String url= ConnectionAddress.ipaddress;
     private static apiController clientobject;
     private static Retrofit retrofit;
 

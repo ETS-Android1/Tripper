@@ -29,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tripper.Common.ConnectionAddress;
 import com.example.tripper.Databases.SessionManager;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -60,7 +61,7 @@ public class AddPlaces extends AppCompatActivity {
     private Button addBtn;
     Bitmap bitmap;
     int selectedIndex;
-    private static final String url="http://192.168.1.32/tripper/addPlaces.php";
+    private static final String url= ConnectionAddress.ipaddress+"/addPlaces.php";
     private static final int PICK_IMAGES_CODES = 0;
     private TextInputLayout title, description, categories, bestVisitTime, budget, address;
     private String uid;

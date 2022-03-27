@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tripper.Common.ConnectionAddress;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
@@ -31,7 +32,7 @@ public class SignUp3rdClass extends AppCompatActivity {
     TextInputLayout phoneNumber;
     CountryCodePicker countryCodePicker;
     Button registerUser;
-    private static final String url="http://192.168.1.32/tripper/register.php";
+    private static final String url= ConnectionAddress.ipaddress +"/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

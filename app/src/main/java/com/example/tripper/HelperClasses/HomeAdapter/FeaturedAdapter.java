@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.tripper.Common.ConnectionAddress;
 import com.example.tripper.R;
 import com.example.tripper.User.Destination;
 
@@ -39,7 +40,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
     @Override
     public void onBindViewHolder(@NonNull FeaturedViewHolder holder, @SuppressLint("RecyclerView") int position) {
         FeaturedHelperClass featuredHelperClass=featuredLocations.get(position);
-        Glide.with(holder.title.getContext()).load("http://192.168.1.32/tripper/images/"
+        Glide.with(holder.title.getContext()).load(ConnectionAddress.ipaddress+"/images/"
                 + featuredHelperClass.getPlaceImage()).into(holder.imageView);
         holder.title.setText(featuredHelperClass.getTitle());
         holder.description.setText(featuredHelperClass.getDescription());

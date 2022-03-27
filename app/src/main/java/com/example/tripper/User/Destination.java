@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.tripper.Common.ConnectionAddress;
 import com.example.tripper.HelperClasses.apiController;
 import com.example.tripper.HelperClasses.placeResponseModel;
 import com.example.tripper.HelperClasses.rating.BarLabels;
@@ -134,7 +135,7 @@ public class Destination extends AppCompatActivity {
                 modifiedDate=placeDetails.get(0).getModifiedDate();
                 address=placeDetails.get(0).getAddress();
 
-                Glide.with(getApplicationContext()).load("http://192.168.1.32/tripper/images/"
+                Glide.with(getApplicationContext()).load(ConnectionAddress.ipaddress+"/images/"
                         + placeDetails.get(0).getPlaceImage()).into(placeImageDisplay);
             }
 

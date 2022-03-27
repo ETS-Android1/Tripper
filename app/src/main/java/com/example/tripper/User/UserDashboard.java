@@ -216,14 +216,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             }
 
 
-            //ArrayList<FeaturedHelperClass> featuredLocations = new ArrayList<>();
-        //featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
-        //featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
-        //featuredLocations.add(new FeaturedHelperClass(R.drawable.manali, "Manali", "Manali offers the most magnificent views of the Pir Panjal and the Dhauladhar ranges covered with snow"));
-
-
-
-
     });
     }
 

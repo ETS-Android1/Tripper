@@ -16,6 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.tripper.Common.LoginSignUp.ForgotPasswordSuccessMessage;
 import com.example.tripper.Common.LoginSignUp.Login;
 import com.example.tripper.Common.LoginSignUp.SignUp2ndClass;
@@ -25,12 +32,14 @@ import com.example.tripper.User.UserDashboard;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ContributorProfileFragment extends Fragment {
 
     TextInputLayout profile_email,profile_fullNameEdit,profile_username,profile_gender,profile_dateOfBirth;
     TextView profile_FullName,username_field;
     Button editProfile,updateProfile;
+    private static final String url="http://192.168.43.170/tripper/profile_update.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -64,6 +73,7 @@ public class ContributorProfileFragment extends Fragment {
         String dateOfBirth=userDetails.get(SessionManager.KEY_DATE);
         String phone=userDetails.get(SessionManager.KEY_PHONENUMBER);
 
+
         profile_FullName.setText(fullName);
         profile_email.getEditText().setText(email);
         profile_fullNameEdit.getEditText().setText(fullNameEdit);
@@ -94,15 +104,42 @@ public class ContributorProfileFragment extends Fragment {
                 String username= profile_username.getEditText().getText().toString();
                 String gender=profile_gender.getEditText().getText().toString();
                 String birthdate=profile_dateOfBirth.getEditText().getText().toString();
+                String uid=userDetails.get(SessionManager.KEY_USERID);
 
-                //DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
+                //DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Uscers");
 
 
-                //reference.child(phone).child("date").setValue(birthdate);
-                //reference.child(phone).child("email").setValue(email);
-                //reference.child(phone).child("fullName").setValue(fullName);
-                //reference.child(phone).child("gender").setValue(gender);
-                //reference.child(phone).child("username").setValue(username);
+                StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
+                        if(response.equals("Profile Updated Succesfully")){
+                            Toast.makeText(getContext(), "Successfull", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+                ){
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> map=new HashMap<String,String>();
+                        map.put("fullName",fullName);
+                        map.put("username",username);
+                        map.put("email",email);
+                        map.put("birthdate",birthdate);
+                        map.put("gender",gender);
+                        map.put("uid",uid);
+                        return map;
+                    }
+                };
+
+                RequestQueue queue= Volley.newRequestQueue(getContext());
+                queue.add(request);
                 Toast.makeText(getContext(), "Successfully Updated", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), Login.class));
                 getActivity().finish();

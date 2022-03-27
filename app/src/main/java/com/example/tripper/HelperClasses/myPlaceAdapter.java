@@ -16,6 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.tripper.Common.ConnectionAddress;
 import com.example.tripper.R;
 import com.example.tripper.User.Destination;
 
@@ -48,8 +49,9 @@ public class myPlaceAdapter extends RecyclerView.Adapter<myPlaceAdapter.myViewHo
         holder.title.setText(responseModelPlaces.getTitle());
         holder.description.setText(String.format("%s, %s", responseModelPlaces.getName(),
                 responseModelPlaces.getState()));
-        Glide.with(holder.title.getContext()).load("http://192.168.1.32/tripper/images/"
+        Glide.with(holder.title.getContext()).load(ConnectionAddress.ipaddress+"/images/"
                 + responseModelPlaces.getPlaceImage()).into(holder.img);
+
 
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {

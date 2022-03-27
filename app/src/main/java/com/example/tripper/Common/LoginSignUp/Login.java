@@ -49,9 +49,7 @@ public class Login extends AppCompatActivity {
         rememberMe = findViewById(R.id.remember_me);
         phoneNumber_editText = findViewById(R.id.phoneNumber_editText);
         password_editText = findViewById(R.id.password_editText);
-        loginGroup=findViewById(R.id.login_group);
-        userLogin=findViewById(R.id.login_user);
-        adminLogin=findViewById(R.id.login_admin);
+
 
         //Check whether phone number and password is already saved in Shared Preference or not
         SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_REMEMBERME);
