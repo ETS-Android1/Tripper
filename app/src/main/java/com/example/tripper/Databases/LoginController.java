@@ -31,5 +31,4 @@ public class LoginController {
         return retrofit.create(LoginApiSet.class);
     }
 
-
 }

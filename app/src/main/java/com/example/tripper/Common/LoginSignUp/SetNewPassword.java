@@ -4,14 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.tripper.Databases.LoginController;
+import com.example.tripper.Databases.ResponseModel;
 import com.example.tripper.R;
 import com.google.android.material.textfield.TextInputLayout;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SetNewPassword extends AppCompatActivity {
 
     TextInputLayout newPassword,reTypePassword;
+    public static final String SUCCESS = "success";
+    public static final String FAILURE = "failure";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +38,33 @@ public class SetNewPassword extends AppCompatActivity {
         //Get data from fields
         String _newPassword=newPassword.getEditText().getText().toString().trim();
         String _phoneNumber=getIntent().getStringExtra("phoneNo");
+        setNewPassword(_newPassword,_phoneNumber);
+    }
 
-        //Update Data in Firestore and in Sessions
-       /* DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(_phoneNumber).child("password").setValue(_newPassword);
-*/
-        startActivity(new Intent(getApplicationContext(),ForgotPasswordSuccessMessage.class));
-        finish();
+    private void setNewPassword(String newPassword, String phoneNumber) {
+        Call<ResponseModel> call = LoginController
+                .getInstance()
+                .getApiSet()
+                .resetPassword(phoneNumber, newPassword);
+
+        call.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                ResponseModel obj=response.body();
+                if(obj.getResult().equals(SUCCESS)) {
+                    Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(),ForgotPasswordSuccessMessage.class));
+                    finish();
+                }else if (obj.getResult().equals(FAILURE)){
+                    Toast.makeText(getApplicationContext(), obj.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+
+            }
+        });
     }
 
     private boolean validateConfirmPassword() {

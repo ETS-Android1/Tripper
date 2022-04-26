@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class apiController {
-    private static final String url= ConnectionAddress.ipaddress;
+    private static final String url= ConnectionAddress.ipaddress+"/";
     private static apiController clientobject;
     private static Retrofit retrofit;
 

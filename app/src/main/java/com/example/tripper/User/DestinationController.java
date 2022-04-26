@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DestinationController {
 
-    private static final String url= ConnectionAddress.ipaddress;
+    private static final String url= ConnectionAddress.ipaddress+"/";
     private static DestinationController clientObject;
     private static Retrofit retrofit;
 
