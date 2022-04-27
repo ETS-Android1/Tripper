@@ -13,8 +13,4 @@ public interface LoginApiSet {
             @Field("password") String password
     );
 
-    Call<ResponseModel> resetPassword(
-            @Field("phone") String phone,
-            @Field("password") String password
-    );
 }

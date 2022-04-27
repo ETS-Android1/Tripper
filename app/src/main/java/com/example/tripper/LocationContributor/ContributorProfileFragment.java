@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tripper.Common.ConnectionAddress;
 import com.example.tripper.Common.LoginSignUp.ForgotPasswordSuccessMessage;
 import com.example.tripper.Common.LoginSignUp.Login;
 import com.example.tripper.Common.LoginSignUp.SignUp2ndClass;
@@ -39,7 +40,7 @@ public class ContributorProfileFragment extends Fragment {
     TextInputLayout profile_email,profile_fullNameEdit,profile_username,profile_gender,profile_dateOfBirth;
     TextView profile_FullName,username_field;
     Button editProfile,updateProfile;
-    private static final String url="http://192.168.43.170/tripper/profile_update.php";
+    private static final String url= ConnectionAddress.ipaddress +"/profile_update.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment

@@ -20,8 +20,6 @@ import retrofit2.Response;
 public class SetNewPassword extends AppCompatActivity {
 
     TextInputLayout newPassword,reTypePassword;
-    public static final String SUCCESS = "success";
-    public static final String FAILURE = "failure";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,29 +40,7 @@ public class SetNewPassword extends AppCompatActivity {
     }
 
     private void setNewPassword(String newPassword, String phoneNumber) {
-        Call<ResponseModel> call = LoginController
-                .getInstance()
-                .getApiSet()
-                .resetPassword(phoneNumber, newPassword);
 
-        call.enqueue(new Callback<ResponseModel>() {
-            @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                ResponseModel obj=response.body();
-                if(obj.getResult().equals(SUCCESS)) {
-                    Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(getApplicationContext(),ForgotPasswordSuccessMessage.class));
-                    finish();
-                }else if (obj.getResult().equals(FAILURE)){
-                    Toast.makeText(getApplicationContext(), obj.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-                }
-
-            @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
-
-            }
-        });
     }
 
     private boolean validateConfirmPassword() {

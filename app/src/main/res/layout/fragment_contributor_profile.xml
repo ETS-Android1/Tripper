@@ -45,7 +45,7 @@
                         android:layout_toRightOf="@+id/profile_image"
                         android:fontFamily="@font/arbutus"
                         android:includeFontPadding="false"
-                        android:text="Harsh"
+                        android:text="Name"
                         android:textColor="#000"
                         android:textSize="20sp" />
 
