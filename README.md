@@ -17,9 +17,9 @@
 ![JavaScript](https://img.shields.io/badge/frontend-javafx-ff69b4.svg?logo=java&style=flat-square)
 ![SQLite](https://img.shields.io/badge/database-SQLite-lightgray.svg?logo=sqlite&logoColor=white&style=flat-square)
 
-- Front End - **JavaFx**, **CSS**
-- Back End - **JAVA**
-- Database - **SQLite**
+- Front End - **XML**, **CSS**
+- Back End - **JAVA**, "JSON"
+- Database - **SQL**
 
 
 ```java
