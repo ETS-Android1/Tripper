@@ -1,7 +1,7 @@
 # Tripper Android 
 
 #### Our Application will provide all the information that is needed about place like how the place is? , how far it is? , how are the people around the place? etc. Thus, this information cannot be gained without a large real-time database. It is very important that database should be used to provide essential information that has been required by the user.   
-[![GitHub repo size](https://img.shields.io/github/repo-size/harshmgr/Exam-App)](https://github.com/harshmgr/Tripper) [![GitHub license](https://img.shields.io/github/license/harshmgr/Exam-App)](https://github.com/harshmgr/Exam-App/blob/master/LICENSE/)
+[![GitHub repo size](https://img.shields.io/github/repo-size/harshmgr/Exam-App)](https://github.com/harshmgr/Tripper) [![GitHub license](https://img.shields.io/github/license/harshmgr/Tripper)](https://github.com/harshmgr/Tripper/blob/master/LICENSE)
 
 ## Abstract
 
@@ -45,9 +45,9 @@ Invite me to connect on [LinkedIn](https://www.linkedin.com/in/harshkumar001/).
 
 ## License
 
-[![GitHub license](https://img.shields.io/github/license/harshmgr/Examination-Application.svg?style=social&logo=github)](https://github.com/harshmgr/Examination-Application/LICENSE) [![Author](https://img.shields.io/static/v1.svg?label=Author&message=@harshmgr&logo=github&style=social)](https://github.com/harshmgr)
+[![GitHub license](https://img.shields.io/github/license/harshmgr/Examination-Application.svg?style=social&logo=github)](https://github.com/harshmgr/Tripper/blob/master/LICENSE) [![Author](https://img.shields.io/static/v1.svg?label=Author&message=@harshmgr&logo=github&style=social)](https://github.com/harshmgr)
 
-**GPL &copy; [HARSH KUMAR](https://github.com/harshmgr/Examination-Application/LICENSE)**
+**GPL &copy; [HARSH KUMAR](https://github.com/harshmgr/Tripper/blob/master/LICENSE)**
 
 Thank you for being here!
 
