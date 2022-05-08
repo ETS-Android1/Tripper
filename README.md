@@ -8,7 +8,9 @@
 ![Travel Application](https://img.shields.io/badge/Examination-Application-lightgrey)
 ![MCA Project](https://img.shields.io/badge/MCA-Project-blue)
 
+##Screenshot
 
+![alt text](https://github.com/harshmgr/Tripper/blob/master/Screenshots/Splash%20Screen.png)
 
 ## Technology Stack Used
 
